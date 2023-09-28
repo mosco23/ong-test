@@ -1,6 +1,7 @@
 <?php
 
-    use Illuminate\Database\Migrations\Migration;
+use App\Models\Template;
+use Illuminate\Database\Migrations\Migration;
     use Illuminate\Database\Schema\Blueprint;
     use Illuminate\Support\Facades\Schema;
 
@@ -19,6 +20,7 @@
                 $table->string('name');
                 $table->string('title');
                 $table->string('description')->nullable();
+                $table->foreignIdFor(Template::class)->constrained()->cascadeOnDelete();
                 $table->timestamps();
             });
         }

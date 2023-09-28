@@ -1,0 +1,32 @@
+<ul class="h-full items-center justify-evenly
+    font-medium rounded-lg "
+    :class="window.innerWidth < 945 ? 'hidden' : 'flex'"
+    >
+    @foreach ($navitems as $navitem)
+        <li class=" relative group/item" x-data="{open: false}">
+            @php
+                $activated = false;
+                if(request()->segment(1) ==$navitem->link || $navitem->items->where('link', request()->segment(1))->isNotEmpty()){
+                    $activated = true;
+                }
+            @endphp
+            <a href="{{$navitem->link}}" class="{{$activated ? 'text-pink-500' : 'group-hover/item:text-pink-600'}} py-7 pl-3 pr-4 font-bold capitalize
+                 flex items-center space-x-2" 
+                 :class="fontSize()"
+                 aria-current="page">
+                <span>{{$navitem->name}}</span>
+                @if ($navitem->items->isNotEmpty())
+                    <span class="h-4">@include('svg.arrow-down')</span>
+                @endif
+            </a>
+            @if ($navitem->items->isNotEmpty())
+                <div class="absolute top-[80%] min-w-max hidden group-hover/item:grid grid-cols-1 group-hover/item:transition duration-300 divide-y-2 bg-white text-slate-600 font-semibold uppercase"
+                    x-transition.duration.500ms>
+                    @foreach ($navitem->items as $sub)
+                        <a href="/{{$sub->link}}" class="h-fit w-full p-3 text-slate-600 hover:text-white hover:bg-pink-600 min-w-max">{{$sub->name}}</a>
+                    @endforeach
+                </div>
+            @endif
+        </li>
+    @endforeach
+</ul>

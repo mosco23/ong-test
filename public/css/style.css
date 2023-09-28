@@ -1,0 +1,125 @@
+.circular{
+    position: relative;
+    height: 100px;
+    width: 100px;
+    transform: scale(1);
+}
+
+.circular .inner {
+    position: absolute;
+    z-index: 6;
+    top: 50%;
+    left: 50%;
+    height: 80px;
+    width: 80px;
+    margin: -40px 0 0 -40px;
+    border-radius: 100%;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
+}
+.circular .bar{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    -webkit-border-radius: 100%;
+    clip: rect(0px, 100px, 100px, 40px);
+    /* background-color: saddlebrown; */
+}
+
+.circle .left{
+    animation: left 1s linear both;
+}
+
+.circle .right{
+    animation: right 2s linear both;
+    /* animation-delay: 1s; */
+
+}
+
+@keyframes left {
+    0%    { 
+        opacity: 0;
+     }
+    100%{
+        transform: rotate(180deg);
+        opacity: 1;
+    }
+}
+
+@keyframes right {
+    0%    { opacity: 0; }
+    100%{
+        transform: rotate(360deg);
+        opacity: 1;
+    }
+}
+
+@keyframes padding {
+    from    { 
+        height: 10rem;
+        bottom: -20px;
+    }
+    to{
+        height: 15rem;
+        bottom: 0px;
+    }
+}
+
+.padding{
+    padding-bottom: 5rem;
+}
+.padding .padding-animate{
+    padding: 1rem;
+}
+
+.padding:hover .padding-animate{
+    /* padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem; */
+    animation: padding 3s linear backwards;
+}
+
+.scaler{
+    overflow: hidden;
+}
+
+
+.scaler:hover .scaler-child{
+    transform: scale(1.05);
+    rotate: -2deg;
+}
+
+.scaler-child{
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    -webkit-transition: all .5s;
+    -moz-transition: all .5s;
+    -o-transition: all .5s;
+    transition: all .5s;
+}
+
+.anim-border-x{
+    border-left: 2px solid;
+    border-right: 2px solid;
+    border-color: slategray;
+}
+
+.anim-border-y{
+    border-top: 2px solid;
+    border-bottom: 2px solid;
+    border-color: slategray;
+}
+
+.anim-border-x:hover{
+    border-color: rgb(236 72 153);
+    transition: 
+        border-left 3s,
+        border-right 3s;
+}
+
+.anim-border-y:hover{
+    border-color: rgb(236 72 153);
+    transition-delay: 3s;
+    transition: height 3s ease, border-color 1s ease;
+}

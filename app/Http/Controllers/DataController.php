@@ -13,9 +13,15 @@
         // }
 
         public function __invoke($slug = 'home') {
+
+            $page = Page::where('slug', strtolower($slug));
+
+            // dd($page->get());
+            if(!$page->exists()){
+                $page = Page::where('slug', 'home');
+            }
             
-            $page = Page::where('slug', strtolower($slug))
-                    ->with(
+            $page = $page->with(
                     [
                         'sections' => function($q){
                             $q->wherePivot('active', true);
@@ -28,7 +34,6 @@
                     ]
                 )
                 ->get();
-
             $page = $page->toArray()[0];
         
             $data['template'] = $page['template']['vue'] ?? 'master';
