@@ -2,7 +2,13 @@
 
 namespace App\Providers;
 
+use App\Models\Contact;
+use App\Models\Image;
+use App\Models\Newsletter;
 use App\Models\Page;
+use App\Observers\ContactObserver;
+use App\Observers\ImageObserver;
+use App\Observers\NewsletterObserver;
 use App\Observers\PageObserver;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
@@ -24,6 +30,16 @@ class EventServiceProvider extends ServiceProvider
 
     protected $observers = [
         Page::class => [PageObserver::class],
+        Contact::class => [
+            ContactObserver::class,
+        ],
+        Newsletter::class => [
+            NewsletterObserver::class,
+        ],
+
+        Image::class => [
+            ImageObserver::class,
+        ]
     ];
 
     /**

@@ -2,10 +2,13 @@
     <div class="bg-white py-7 pl-10">
         <a href="#" class="flex items-center">
             <img src="/img/logo.png" class="h-9 mr-3" alt="Flowbite Logo">
-            <span class="self-center whitespace-nowrap">
-                <span class="text-4xl font-semibold text-green-500">ONG</span>
-                <span class="text-4xl font-semibold text-blue-800">ASE2D</span>
-            </span>
+            <div>
+                <p class="text-xs">Actions du Sud pour l'Environnement et le Développement Durable</p>
+                <span class="self-center whitespace-nowrap">
+                    <span class="text-4xl font-semibold text-green-500">OING</span>
+                    <span class="text-4xl font-semibold text-blue-800">ASE2D</span>
+                </span>
+            </div>
         </a>
     </div>
     <ul class="col-span-2 flex items-center justify-evenly md:p-0  font-medium border rounded-lg md:flex-row md:mt-0 md:border-0">

@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DataController;
+use App\Http\Controllers\NewsletterController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,10 +16,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('mail', function () {
+    return view('emails.contact-form-submitted');
+});
 Route::get('/{slug?}', DataController::class)
     ->where('slug', '[A-Za-z-]+')
     ->name('page');
 
+Route::post('/contact', [ContactController::class, 'store'])->name('post-contact');
+Route::post('/newsletter', [NewsletterController::class, 'store'])->name('post-newsletter');
 // Route::get('/', function () {
 //     return view('welcome');
 // });

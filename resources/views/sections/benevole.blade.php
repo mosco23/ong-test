@@ -1,10 +1,10 @@
-<section class="grid grid-cols-1 md:grid-cols-2 py-12">
-    <div class="md:w-1/2 mx-3 md:mx-auto flex items-center">
+<section class="grid grid-cols-1 md:grid-cols-2 py-12 md:py-0 md:gap-x-3 lg:gap-x-5">
+    <div class="mx-3 flex items-center">
         <div class="grid grid-cols-1 gap-5 py-10">
             <h1>
                 <span class="bg-green-400 text-white text-xs text-center capitalize py-2 px-3 min-w-min">REJOIGNEZ-NOUS</span>
             </h1>
-            <h2 class="text-blue-600 text-3xl md:text-5xl font-bold uppercase">Devenez un fier bénévole</h2>
+            <h2 class="lg:w-2/3 text-blue-600 text-3xl md:text-4xl lg:text-5xl font-bold uppercase">Devenez un fier bénévole</h2>
             <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laboriosam incidunt totam excepturi doloribus iste magnam nisi ipsum 
                 libero corrupti corporis, accusamus assumenda eum quisquam, numquam natus! Aliquid sit deserunt temporibus.
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi culpa fuga ullam, quae deserunt quia ipsum aspernatur iure facere in corporis 

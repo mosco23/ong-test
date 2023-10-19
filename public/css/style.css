@@ -123,3 +123,23 @@
     transition-delay: 3s;
     transition: height 3s ease, border-color 1s ease;
 }
+
+.info{
+    width: 100%;
+    background-color: black;
+    white-space: nowrap;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.info p{
+    display: inline-block;
+    color: #FFF;
+    padding-left: 100%;
+    animation: move 25s linear infinite;
+}
+
+@keyframes move {
+    0%   { transform: translate(0, 0); }
+    100% { transform: translate(-100%, 0); }
+}

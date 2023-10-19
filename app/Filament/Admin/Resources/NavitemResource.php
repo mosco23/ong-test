@@ -26,8 +26,12 @@ class NavitemResource extends Resource
     {
         return $form
             ->schema([
-                TextInput::make("name"),
-                TextInput::make('link'),
+                TextInput::make("name")
+                    ->required()
+                    ->maxLength(255),
+                TextInput::make('link')
+                    ->required()
+                    ->maxLength(255),
                 Select::make('navbars')
                     ->relationship('navbars', 'name')
                     ->preload()

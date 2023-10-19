@@ -1,7 +1,6 @@
 <nav class=""
     x-data="{openItem:false}">
-    <div class="grid grid-cols-2"
-        :class=" window.innerWidth < 1105 ? 'md:grid-cols-3' : 'md:grid-cols-4' "
+    <div class="grid grid-cols-3 lg:flex lg:items-center lg:justify-center"
         x-data="{
             fontSize(){
                 width = window.innerWidth;
@@ -20,18 +19,22 @@
             }
         }"
         >
-        <div class="bg-white py-7 pl-10">
+        <div class="col-span-2 lg:flex-none lg:w-[20.7rem] bg-white py-5 pl-5">
             <a href="/" class="flex items-center">
-                <img src="/img/logo.png" class="h-9 mr-3" alt="Flowbite Logo">
-                <span class="self-center whitespace-nowrap">
-                    <span class="sm:text-3xl md:text-4xl font-semibold text-green-500" >ONG</span>
-                    <span class="xs:text-3xl md:text-4xl font-semibold text-blue-800">ASE2D</span>
-                </span>
+                <img src="/img/logo.png" class="h-16 md:h-24 mr-3" alt="Flowbite Logo">
+                <div class="grid grid-cols-1 divide-y gap-y-2">
+                    <span class="self-center whitespace-nowrap">
+                        <span class="md:text-4xl font-semibold text-green-500">OING</span>
+                        <span class="md:text-4xl font-semibold text-blue-800">ASE2D</span>
+                    </span>
+                    <p class="text-xs text-black text-wrap">Actions du Sud pour l'Environnement et le Développement Durable</p>
+                </div>
             </a>
         </div>
-        <div class="md:col-span-2">
-            <div class="h-full p-2 items-center justify-end mr-3"
-                :class="window.innerWidth < 945 ? 'flex' : 'hidden'">
+        <div class="lg:grow">
+            <div class="h-full p-2 items-center justify-end mr-3 flex lg:hidden"
+                {{-- :class="window.innerWidth < 945 ? 'flex' : 'hidden'" --}}
+                >
                 <div class="max-w-max grid grid-cols-1 gap-1 border p-2 cursor-pointer" @click="openItem = !openItem">
                     <div class="w-8 h-1 rounded-lg bg-slate-400"></div>
                     <div class="w-8 h-1 rounded-lg bg-slate-400"></div>
@@ -40,16 +43,20 @@
             </div>
             @include('items.desktop-navbar')
         </div>
-        <a href="#"
-            class="hidden items-center  justify-center space-x-2 font-semibold hover:text-pink-600"
-            :class="window.innerWidth < 1105 ? 'hidden' : 'md:flex'; fontSize()">
-            <span>
-                @include('svg.heart')
-            </span>
-            <span>
-                Faire un don
-            </span>
-        </a>
+        <div class="flex-none w-36 lg:px-1">
+            <div class="flex items-center justify-center"
+                :class="window.innerWidth < 1105 ? 'hidden' : 'md:flex'; fontSize()">
+                <a href="#"
+                    class="flex items-center justify-center space-x-2 font-semibold hover:text-pink-600">
+                    <span>
+                        @include('svg.heart')
+                    </span>
+                    <span>
+                        Faire un don
+                    </span>
+                </a>
+            </div>
+        </div>
     </div>
     <div class="bg-white text-slate-400 mx-4"
         :class="openItem ? 'block' : 'hidden'">

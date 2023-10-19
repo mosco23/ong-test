@@ -30,7 +30,7 @@
     ];
 @endphp
 <section class="py-14 bg-white">
-    <div class="md:w-3/5 mx-2 md:mx-auto">
+    <div class="md:w-4/5 lg:w-3/5 mx-2 md:mx-auto">
         <h1 class="text-3xl md:text-5xl font-bold my-5">Alphabétisation et scolarisation de la jeune fille</h1>
         <div class="md:mx-10">
             <img src="/img/scolarisation.webp" alt="scolarisation">

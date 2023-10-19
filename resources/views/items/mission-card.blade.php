@@ -1,6 +1,6 @@
 <div 
     x-data="{hover: false}" 
-    class="px-4" 
+    class="px-1" 
     :class="!hover || 'shadow-lg' "
     @mouseover="hover = true"
     @mouseout="hover = false">

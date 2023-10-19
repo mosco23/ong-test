@@ -16,6 +16,7 @@ class Navitem extends Model
         'name',
         'link',
         'navitem_id',
+        'sort'
     ];
 
 
@@ -29,6 +30,6 @@ class Navitem extends Model
     }
 
     function items(): HasMany {
-        return $this->hasMany(static::class);
+        return $this->hasMany(static::class)->orderBy('sort');
     }
 }

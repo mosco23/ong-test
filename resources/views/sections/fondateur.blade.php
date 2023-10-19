@@ -1,7 +1,10 @@
 <section class="py-14 bg-white">
-    <h1 class="text-4xl md:text-7xl font-bold text-center my-5">Le Mot de la Fondatrice</h1>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 md:w-1/2 mx-5 md:mx-auto ">
-        <p>Au nom de toute l’équipe de l’ONG BLOOM, nous vous sommes particulièrement reconnaissants de soutenir et d’avoir 
+    <h1 class="text-4xl lg:text-7xl font-bold text-center my-5">Le Mot de la Fondatrice</h1>
+    <div class="grid grid-cols-1 gap-3 lg:gap-0 md:block lg:w-3/4 mx-5 lg:mx-auto ">
+        <img src="/img/fondatrice.webp" alt="fondateur ase2d" 
+            class="w-fit md:w-64 lg:w-auto h-fit md:float-right md:mx-5" />
+        <p class="text-justify">
+            Au nom de toute l’équipe de l’ONG BLOOM, nous vous sommes particulièrement reconnaissants de soutenir et d’avoir 
             été au-devant de nos nobles causes : L’autonomisation de la femme, la scolarisation de la jeune fille et la lutte contre les VBG. 
 
             A travers son slogan : « Femme d’impact, lève-toi !», l’ONG BLOOM vient refleurir et éclore le potentiel qui se trouve 
@@ -26,9 +29,5 @@
             
             Je vous remercie !
         </p>
-        <div>
-            <img src="/img/fondatrice.webp" alt="fondateur ase2d" 
-                class="w-fit h-fit" />
-        </div>
     </div>
 </section>

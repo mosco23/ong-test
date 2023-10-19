@@ -13,7 +13,7 @@
         // }
 
         public function __invoke($slug = 'home') {
-
+            
             $page = Page::where('slug', strtolower($slug));
 
             // dd($page->get());
@@ -57,10 +57,10 @@
 
         }
 
-        public static function getSlider(){
-            return self::arrayByKey(Slider::with('boutons')->where('active', true)
-                    ->orderBy('rang', 'ASC')->get()->toArray());
-        }
+        // public static function getSlider(){
+        //     return self::arrayByKey(Slider::with('boutons')->where('active', true)
+        //             ->orderBy('rang', 'ASC')->get()->toArray());
+        // }
 
 
         public static function getData(array $sections): array{

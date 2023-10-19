@@ -11,13 +11,26 @@
     }">
     @foreach ($navitems as $navitem)
         <div class="">
-            <div class="flex justify-between items-center cursor-pointer p-3" 
-                @click="setIndex({{$navitem->id}})"
+            @php
+                $activated = false;
+                if(request()->segment(1) ==$navitem->link || $navitem->items->where('link', request()->segment(1))->isNotEmpty()){
+                    $activated = true;
+                }
+            @endphp
+            <div class="flex justify-between items-center cursor-pointer p-1" 
                 x-transition:enter.duration.500ms
                 x-transition:leave.duration.400ms>
-                <div>{{$navitem->name}}</div>
+                @if ($navitem->link == '#')
+                    <div class="{{$activated ? 'text-pink-500' : 'hover:text-pink-600'}} w-full h-full p-3">
+                        {{$navitem->name}}
+                    </div>
+                @else
+                    <div class="p-3">
+                        <a href="/{{$navitem->link}}" class="p-3 hover:text-white hover:bg-pink-600 min-w-max {{ !($activated && $navitem->items->isEmpty()) ? 'text-slate-600' : 'text-white bg-pink-600'}}">{{$navitem->name}}</a>
+                    </div>
+                @endif
                 @if ($navitem->items->isNotEmpty())
-                    <div class="border-l p-3">
+                    <div class="border-l p-3" @click="setIndex({{$navitem->id}})">
                         <span x-show="!(index === {{$navitem->id}})">
                             @include('svg.plus')
                         </span>
@@ -28,7 +41,13 @@
             </div>
             <div class="grid grid-cols-1 divide-y" x-show="index === {{$navitem->id}}">
                 @foreach ($navitem->items as $sub)
-                    <a href="/{{$sub->link}}" class="h-fit w-full p-3 text-slate-600 first:border-t hover:text-white hover:bg-pink-600 min-w-max">{{$sub->name}}</a>
+                    @php
+                        $activated = false;
+                        if(request()->segment(1) ==$sub->link){
+                            $activated = true;
+                        }
+                    @endphp
+                    <a href="/{{$sub->link}}" class="h-fit w-full p-3 first:border-t hover:text-white hover:bg-pink-600 min-w-max {{ !$activated ? 'text-slate-600' : 'text-white bg-pink-600'}}">{{$sub->name}}</a>
                 @endforeach
             </div>
         </div>
