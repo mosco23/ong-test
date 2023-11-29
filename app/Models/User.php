@@ -7,6 +7,7 @@ use Filament\Panel;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -53,8 +54,8 @@ class User extends Authenticatable implements FilamentUser
         return str_ends_with($this->email, '@gmail.com');
     }
 
-    // function roles(): HasMany {
-    //     return $this->hasMany(Role)
-    // }
+    function orgChart(): HasOne {
+        return $this->hasOne(OrgChart::class);
+    }
 
 }

@@ -1,9 +1,18 @@
+@php
+    $timeFormatted = '';
+    if ($activity->start_at and $activity->end_at) {
+        $timeFormatted = $activity->getDate()." De ".$activity->getTime($activity->start_at)." &agrave; ".$activity->getTime($activity->end_at);
+    }else if($activity->start_at and !$activity->end_at){
+        $timeFormatted = $activity->getDate()." &agrave; ".$activity->getTime($activity->start_at);
+    }else{
+        $timeFormatted = $activity->getDate();
+    }
+@endphp
+
 <div class="grid grid-cols-1 gap-y-3"   x-data="{'isModalOpen': false}" x-on:keydown.escape="isModalOpen=false">
     <div>
         <span class="p-2 border-b-2 border-r-2 border-green-600 text-slate-600 font-semibold rounded-r-xl">
-            {{-- {{  date("F", mktime(0, 0, 0, $activity->date, 1)) }} --}}
-            {{ $activity->getDate() }} @if($activity->start_at) De @endif {{ !$activity->start_at ? '' : $activity->getTime($activity->start_at) }} @if($activity->end_at) &agrave; @endif {{ !$activity->end_at ? '' : $activity->getTime($activity->end_at) }}
-            {{-- $activity->date &agrave; 12h00 --}}
+           {!! $timeFormatted !!}
         </span>
     </div>
     <div class="flex flex-col justify-between">

@@ -8,8 +8,8 @@
                 <span class="text-red-600">02 ANS D'EXPÉRIENCE</span>
                 <h1 class="text-5xl lg:text-7xl font-bold py-3 text-wrap">Présentation de l’OING ASE2D</h1>
             </div>
-            <div class="h-64">
-                @include('items.slider-2', ['images' => $img_list])
+            <div class="h-max">
+                @include('items.slider-3', ['images' => $img_list])
             </div>
         </div>
         <p class="text-xl">

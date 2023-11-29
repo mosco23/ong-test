@@ -53,7 +53,7 @@
     {{-- <div class="grid grid-cols-1 md:grid-cols-2 gap-2 md:w-5/6 lg:w-3/5 md:mx-auto"> --}}
         @foreach (App\Models\Image::all() as $img)
             {{-- @include('items.event-card', ['img' => $img]) --}}
-            <img src="/storage/{{$img->url}}" alt="" class="h-full w-full">
+            <img src="{{asset('/storage/'.$img->url)}}" alt="" class="h-full w-full">
         @endforeach
 
         {{-- <template x-for="img in getImages()">

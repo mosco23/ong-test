@@ -566,14 +566,14 @@ video {
   inset: 0px;
 }
 
-.inset-y-0 {
-  top: 0px;
-  bottom: 0px;
-}
-
 .inset-x-0 {
   left: 0px;
   right: 0px;
+}
+
+.inset-y-0 {
+  top: 0px;
+  bottom: 0px;
 }
 
 .-bottom-36 {
@@ -684,6 +684,10 @@ video {
   margin: 1.25rem;
 }
 
+.m-2 {
+  margin: 0.5rem;
+}
+
 .mx-10 {
   margin-left: 2.5rem;
   margin-right: 2.5rem;
@@ -744,6 +748,11 @@ video {
   margin-bottom: 2rem;
 }
 
+.my-2 {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
 .mb-2 {
   margin-bottom: 0.5rem;
 }
@@ -776,6 +785,10 @@ video {
   margin-left: 3.5rem;
 }
 
+.ml-4 {
+  margin-left: 1rem;
+}
+
 .mr-3 {
   margin-right: 0.75rem;
 }
@@ -794,10 +807,6 @@ video {
 
 .mt-4 {
   margin-top: 1rem;
-}
-
-.ml-4 {
-  margin-left: 1rem;
 }
 
 .block {
@@ -934,6 +943,14 @@ video {
   height: max-content;
 }
 
+.h-80 {
+  height: 20rem;
+}
+
+.h-48 {
+  height: 12rem;
+}
+
 .max-h-6 {
   max-height: 1.5rem;
 }
@@ -1028,6 +1045,11 @@ video {
 
 .w-screen {
   width: 100vw;
+}
+
+.w-min {
+  width: -moz-min-content;
+  width: min-content;
 }
 
 .min-w-max {
@@ -1508,9 +1530,9 @@ video {
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
-.bg-slate-600 {
+.bg-amber-300 {
   --tw-bg-opacity: 1;
-  background-color: rgb(71 85 105 / var(--tw-bg-opacity));
+  background-color: rgb(252 211 77 / var(--tw-bg-opacity));
 }
 
 .bg-opacity-40 {
@@ -1531,6 +1553,11 @@ video {
 
 .bg-no-repeat {
   background-repeat: no-repeat;
+}
+
+.object-contain {
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 
 .object-cover {
@@ -1894,6 +1921,10 @@ video {
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
+.underline {
+  text-decoration-line: underline;
+}
+
 .opacity-0 {
   opacity: 0;
 }
@@ -2195,14 +2226,6 @@ video {
     right: 2.5rem;
   }
 
-  .md\:left-5 {
-    left: 1.25rem;
-  }
-
-  .md\:right-5 {
-    right: 1.25rem;
-  }
-
   .md\:order-1 {
     order: 1;
   }
@@ -2273,8 +2296,16 @@ video {
     display: block;
   }
 
+  .md\:inline {
+    display: inline;
+  }
+
   .md\:flex {
     display: flex;
+  }
+
+  .md\:inline-flex {
+    display: inline-flex;
   }
 
   .md\:grid {
@@ -2479,14 +2510,6 @@ video {
 }
 
 @media (min-width: 1024px) {
-  .lg\:left-10 {
-    left: 2.5rem;
-  }
-
-  .lg\:right-10 {
-    right: 2.5rem;
-  }
-
   .lg\:col-span-2 {
     grid-column: span 2 / span 2;
   }
@@ -2494,6 +2517,10 @@ video {
   .lg\:mx-auto {
     margin-left: auto;
     margin-right: auto;
+  }
+
+  .lg\:block {
+    display: block;
   }
 
   .lg\:flex {
