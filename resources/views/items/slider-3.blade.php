@@ -42,7 +42,7 @@
                   class="" 
                   {{-- :style="`background-image: url('storage/${image}')`" --}}
                   >
-                    <img :src=`img/${image}` alt="image" class="rounded-sm object-contain h-96 w-full" />
+                    <img :src=`storage/${image}` alt="image" class="rounded-sm object-contain h-96 w-full" />
                 </div>
             </template>
         </div>

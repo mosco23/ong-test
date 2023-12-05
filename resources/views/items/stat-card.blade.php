@@ -3,13 +3,13 @@
         <div class="circular">
             <div class="inner">
                 <div class="circle">
-                    <div class="bar left border-4 {{$color}}">
+                    <div class="bar left border-4" style="border-color: {{$stat->color}}">
                         <div class="progress"></div>
                     </div>
                     <div class="m-5 absolute top-auto left-auto">
-                        @include("svg/".$svg)
+                        @svg($stat->icon, 'w-full h-full')
                     </div>
-                    <div class="bar right border-4 {{$color}}">
+                    <div class="bar right border-4" style="border-color: {{$stat->color}}">
                         <div class="progress"></div>
                     </div>
                 </div>
@@ -23,17 +23,17 @@
         x-data="clock"
         x-init="max = 200; init()"
         x-text="counter"></div>
-    <p class="text-center text-slate-500">Description</p>
+    <p class="text-center text-slate-500">{{$stat->description }}</p>
 </div>
 
 
  
-{{-- <script>
+<script>
     document.addEventListener('alpine:init', () => {
         Alpine.data('clock', () => ({
             counter: 0,
             setInterval(() => {
-                if(this.counter === 23){
+                if(this.counter === {{$stat->count}}){
                     clearInterval;
                 }else{
                     this.counter += 1;
@@ -41,4 +41,4 @@
             }, 30)
         }))
     })
-</script> --}}
+</script>

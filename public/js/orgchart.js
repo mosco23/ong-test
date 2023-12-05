@@ -44,5 +44,12 @@ var chart = new OrgChart(document.getElementById("tree"), {
         field_1: "title",
         img_0: "img"
     },
-    nodes: nodes
+    tags: {
+        filter: {
+            template: 'dot'
+        }
+    },
+    // nodes: nodes
 });
+
+chart.load(nodes);

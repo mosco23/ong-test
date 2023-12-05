@@ -7,11 +7,13 @@ use App\Models\Section;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Section as ComponentsSection;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
 class SectionResource extends Resource
@@ -25,6 +27,11 @@ class SectionResource extends Resource
         return $form
             ->schema([
                 ComponentsSection::make([
+                    Select::make('page_id')
+                        ->relationship('pages', 'name')
+                        ->multiple()
+                        ->preload()
+                        ->searchable(),
                     TextInput::make('name')
                         ->required()
                         ->maxLength(255),
@@ -34,10 +41,13 @@ class SectionResource extends Resource
                     TextInput::make('title')
                         ->maxLength(255),
                     TextInput::make('subtitle'),
-                    Textarea::make('description'),
-                    FileUpload::make('img')
-                        ->image(),
                 ])->columns(2),
+                ComponentsSection::make([
+                    FileUpload::make('img')
+                        ->image()
+                        ->imageEditor(),
+                    Textarea::make('description'),
+                ])->columns(1),
                 Repeater::make('items')
                     ->relationship('items')
                     ->schema([
@@ -45,6 +55,7 @@ class SectionResource extends Resource
                         TextInput::make('description'),
                         FileUpload::make('image')
                             ->image()
+                            ->imageEditor()
                     ])
                     ->columns(2)
                     ->defaultItems(0)
@@ -55,7 +66,13 @@ class SectionResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('name')
+                TextColumn::make('name')
+                    ->searchable()
+                    ->sortable(),
+                TextColumn::make('title')
+                    ->searchable()
+                    ->sortable(),
+                TextColumn::make('subtitle')
                     ->searchable()
                     ->sortable(),
             ])

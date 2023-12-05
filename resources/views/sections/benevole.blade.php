@@ -2,16 +2,14 @@
     <div class="mx-3 flex items-center">
         <div class="grid grid-cols-1 gap-5 py-10">
             <h1>
-                <span class="bg-green-400 text-white text-xs text-center capitalize py-2 px-3 min-w-min">REJOIGNEZ-NOUS</span>
+                <span class="bg-green-400 text-white text-xs text-center capitalize py-2 px-3 min-w-min">{{$sect['subtitle']}}</span>
             </h1>
-            <h2 class="lg:w-2/3 text-blue-600 text-3xl md:text-4xl lg:text-5xl font-bold uppercase">Devenez un fier bénévole</h2>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laboriosam incidunt totam excepturi doloribus iste magnam nisi ipsum 
-                libero corrupti corporis, accusamus assumenda eum quisquam, numquam natus! Aliquid sit deserunt temporibus.
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi culpa fuga ullam, quae deserunt quia ipsum aspernatur iure facere in corporis 
-                cupiditate quis sapiente quaerat distinctio ut! Tempore, numquam voluptatem?
+            <h2 class="lg:w-2/3 text-blue-600 text-3xl md:text-4xl lg:text-5xl font-bold uppercase">{{$sect['title']}}</h2>
+            <p class="text-justify">
+                {{$sect['description']}}
             </p>
             <div>
-                <a href="#" class="flex space-x-2 max-w-max p-3 text-white text-lg font-bold bg-pink-600">
+                <a href="/contact" class="flex space-x-2 max-w-max p-3 text-white text-lg font-bold bg-pink-600">
                     <span>
                         @include('svg.user-group')
                     </span>

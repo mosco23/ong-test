@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\User;
+use App\Models\PartnerCategory;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -12,13 +12,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('org_charts', function (Blueprint $table) {
+        Schema::create('partners', function (Blueprint $table) {
             $table->id();
-            $table->integer('pid');
-            $table->string('block');
-            $table->string('title');
-            $table->string('img');
-            $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->string('name');
+            $table->string('logo');
+            $table->foreignIdFor(PartnerCategory::class)->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->timestamps();
         });
     }
@@ -28,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('org_charts');
+        Schema::dropIfExists('partners');
     }
 };

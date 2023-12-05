@@ -1,14 +1,19 @@
 @php
-    $img_list = ['logo.png', 'scolarisation.webp', 'vbg.webp'];
-    $img = 'logo.png';
+    $categories = \App\Models\PartnerCategory::all();
 @endphp
 
 <section>
-    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-1 gap-y-4 lg:w-1/2 mx-auto p-5">
-        @foreach (range(0, 13) as $c)
-            <div class="bg-contain bg-no-repeat bg-center h-52" style="background-image: url('/img/{{$img}}')">
-                {{-- <img src="/img/{{$img}}" alt="" class="w-fit"> --}}
-            </div>
-        @endforeach
-    </div>
+    @foreach ($categories as $category)
+        <div class="my-10">
+            @if ($category->partners->count())
+                <h1 class="text-center text-3xl text-blue-600 my-3">{{$category->name}}</h1>
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-1 gap-y-4 lg:w-1/2 mx-auto p-5">
+                    @foreach ($category->partners as $partner)
+                        <div class="bg-contain bg-no-repeat bg-center h-52" style="background-image: url('/storage/{{$partner->logo}}')">
+                        </div>
+                    @endforeach
+                </div>
+            @endif
+        </div>
+    @endforeach
 </section>

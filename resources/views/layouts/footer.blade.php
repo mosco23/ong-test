@@ -8,7 +8,9 @@
                     </div>
                     <div>
                         <p class="text-white font-bold text-lg">Appelez-nous</p>
-                        <p class="text-slate-400">+225 xx xx xx xx</p>
+                        <p class="text-slate-400">+225 07 07 64 24 85</p>
+                        <p class="text-slate-400">+225 07 08 07 48 49</p>
+                        <p class="text-slate-400">+225 07 07 48 92 82</p>
                     </div>
                 </div>
             </div>
@@ -20,7 +22,7 @@
                     </div>
                     <div>
                         <p class="text-white font-bold text-lg">Ecrivez-nous</p>
-                        <p class="text-slate-400">contact@ongase2d.com</p>
+                        <p class="text-slate-400">contacts@oingase2d.org</p>
                     </div>
                 </div>
             </div>

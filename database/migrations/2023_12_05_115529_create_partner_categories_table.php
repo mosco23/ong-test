@@ -11,8 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('org_charts', function (Blueprint $table) {
-            $table->integer('rank')->default(0);
+        Schema::create('partner_categories', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->timestamps();
         });
     }
 
@@ -21,8 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('org_charts', function (Blueprint $table) {
-            $table->dropColumn('rank');
-        });
+        Schema::dropIfExists('partner_categories');
     }
 };

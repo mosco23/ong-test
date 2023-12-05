@@ -27,7 +27,7 @@
                             $q->wherePivot('active', true);
                             $q->orderBy('rang', 'ASC');
                             $q->with('items');
-                            $q->select(['name', 'vue', 'title', 'subtitle', 'description', 'img']);
+                            // $q->select(['name', 'vue', 'title', 'subtitle', 'description', 'img']);
                         },
                         'template',
                         // 'sectionitems',

@@ -15,7 +15,7 @@ class OrgChart extends Model
         'title',
         'img',
         'user_id',
-        'rank',
+        'block',
     ];
 
     function user() : BelongsTo {

@@ -8,7 +8,7 @@
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <link rel="stylesheet" href="/css/animate.css">
     <link rel="stylesheet" href="/css/style.css">
-    <script src="/js/orgchart.default.js"></script>
+    {{-- <script src="/js/orgchart.default.js"></script> --}}
     
     <title>{{env('APP_NAME')}}</title>
 </head>

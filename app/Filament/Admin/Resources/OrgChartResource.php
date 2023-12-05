@@ -12,6 +12,7 @@ use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
+use Filament\Forms\Get;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Columns\ImageColumn;
@@ -19,7 +20,31 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
-
+use Filament\Support\Contracts\HasLabel;
+ 
+enum OrgchartBlockEnum: string implements HasLabel
+{
+    case president = 'presidence';
+    case commissaire = 'commissaire aux comptes';
+    case secretaire = 'secretaire';
+    case tresorier = 'tresorier';
+    case coordonnateur = 'coordonnateur';
+    
+    public function getLabel(): ?string
+    {
+        return $this->name;
+        
+        // or
+    
+        return match ($this) {
+            self::president => 'Presidence',
+            self::commissaire => 'Commissaire aux comptes',
+            self::secretaire => 'Secretaire',
+            self::tresorier => 'Tresorier',
+            self::coordonnateur => 'Coordonnateur',
+        };
+    }
+}
 
 class OrgChartResource extends Resource
 {
@@ -31,20 +56,26 @@ class OrgChartResource extends Resource
     {
         return $form
             ->schema([
-                Section::make()
-                    ->schema([
-                        TextInput::make("pid")
-                            ->label('Rang')
+                        Section::make()
+                            ->schema([
+                                Select::make('block')
+                            ->options(OrgchartBlockEnum::class)
                             ->required()
-                            ->numeric()
-                            ->integer()
-                            ->minValue(0),
-                        TextInput::make("rank")
-                            ->label('Position')
-                            ->required()
-                            ->numeric()
-                            ->integer()
-                            ->minValue(0),
+                            ->live(),
+                        Select::make('pid')
+                            ->label('Niveau')
+                            ->options(function(Get $get){
+                                $block = $get('block');
+                                if($block ==  OrgchartBlockEnum::president){
+                                    return range(1, 3);
+                                }else if($block == OrgchartBlockEnum::commissaire || $block == OrgchartBlockEnum::secretaire || $block == OrgchartBlockEnum::tresorier){
+                                    return range(1, 2);
+                                }else{
+                                    return range(1, OrgChart::all()->count() + 1);
+                                }
+
+                            })
+                            ->required(),
                         TextInput::make("title")
                             ->label('Titre')
                             ->live()
@@ -70,12 +101,16 @@ class OrgChartResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('pid')
-                    ->label('Rang'),
                 TextColumn::make('title')
                     ->label('Titre'),
-                ImageColumn::make('img'),
+                TextColumn::make('pid')
+                    ->label('Niveau'),
+                TextColumn::make('title')
+                    ->label('Titre'),
+                ImageColumn::make('img')
+                    ->label('photo'),
                 TextColumn::make('user.name')
+                    ->label('Nom')
             ])
             ->filters([
                 //
