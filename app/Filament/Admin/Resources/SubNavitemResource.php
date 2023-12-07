@@ -25,6 +25,7 @@ class SubNavitemResource extends Resource
 
     protected static ?string $model = Navitem::class;
 
+    protected static ?string $navigationGroup = "Web master";
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     public static function form(Form $form): Form
@@ -42,7 +43,13 @@ class SubNavitemResource extends Resource
                         ->required(),
                     TextInput::make('link')
                         ->maxLength(255)
-                        ->required(),
+                        ->required()
+                        ->disabled(function($state){
+                            if(auth()->user()->isDev()){
+                                return false;
+                            }
+                            return $state != null;
+                        }),
                 ]),
                 Section::make([
                     Repeater::make('items')

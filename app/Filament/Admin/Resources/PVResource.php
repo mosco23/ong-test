@@ -23,7 +23,9 @@ class PVResource extends Resource
 {
     protected static ?string $model = PV::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-document-text';
+    protected static ?string $modelLabel = "Procès verbal (PV)";
+    protected static ?string $pluralModelLabel = "Procès verbaux (PVs)";
 
     public static function form(Form $form): Form
     {
@@ -33,7 +35,8 @@ class PVResource extends Resource
                     ->schema([
                         TextInput::make('name')
                             ->maxLength(255)
-                            ->required(),
+                            ->required()
+                            ->label('Nom'),
                         DatePicker::make('date')
                             ->required(),
                     ]),
@@ -41,12 +44,15 @@ class PVResource extends Resource
                     ->schema([
                         FileUpload::make('url')
                             ->required()
+                            ->label('Fichier')
                             ->directory('pdf'),
                     ]),
                 Repeater::make('agenda_id')
                     ->relationship('agendas')
+                    ->label('Ordres du jour')
                     ->simple(
                         TextInput::make('name')
+                            ->label('Nom')
                     )
 
             ]);
@@ -58,7 +64,8 @@ class PVResource extends Resource
             ->columns([
                 TextColumn::make('name')
                     ->sortable()
-                    ->searchable(),
+                    ->searchable()
+                    ->label('Nom'),
                 TextColumn::make('date')
                     ->date('d F Y')
                     ->sortable()

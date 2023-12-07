@@ -6,7 +6,7 @@
             </h1>
             <h2 class="lg:w-2/3 text-blue-600 text-3xl md:text-4xl lg:text-5xl font-bold uppercase">{{$sect['title']}}</h2>
             <p class="text-justify">
-                {{$sect['description']}}
+                {!! $sect['description'] !!}
             </p>
             <div>
                 <a href="/contact" class="flex space-x-2 max-w-max p-3 text-white text-lg font-bold bg-pink-600">

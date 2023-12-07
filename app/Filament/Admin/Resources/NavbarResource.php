@@ -23,7 +23,10 @@ class NavbarResource extends Resource
 {
     protected static ?string $model = Navbar::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationGroup = "Navigation su site";
+    protected static ?string $navigationIcon = 'heroicon-o-arrow-path-rounded-square';
+    protected static ?string $modelLabel = "Barre de navigation";
+    protected static ?string $pluralModelLabel = "Barres de navigation";
 
     public static function form(Form $form): Form
     {
@@ -31,18 +34,28 @@ class NavbarResource extends Resource
             ->schema([
                 TextInput::make('name')
                     ->maxLength(255)
-                    ->required(),
+                    ->required()
+                    ->label('Nom'),
                 Repeater::make('navtiems')
                     ->relationship("navitems")
+                    ->label('Elements')
                     ->schema([
-                        TextInput::make("name"),
-                        TextInput::make('link'),
+                        TextInput::make("name")
+                            ->label('Nom'),
+                        TextInput::make('link')
+                            ->label('Lien')
+                            ->disabled(function($state){
+                                if(auth()->user()->isDev()){
+                                    return false;
+                                }
+                                return $state != null;
+                            }),
                         Select::make('parent')
                             ->preload()
                             ->searchable(),
                     ])
                     ->defaultItems(0)
-                    ->orderColumn('sort')
+                    ->orderColumn('navitems.sort')
                     ->itemLabel(fn (array $state): ?string => $state['name'] ?? null),
 
             ])
@@ -53,7 +66,10 @@ class NavbarResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('name'),
+                TextColumn::make('name')
+                    ->label('Nom')
+                    ->searchable()
+                    ->sortable(),
             ])
             ->filters([
                 //

@@ -19,8 +19,8 @@ use Filament\Tables\Table;
 class ActivityResource extends Resource
 {
     protected static ?string $model = Activity::class;
-
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $modelLabel = "activité";
+    protected static ?string $navigationIcon = 'heroicon-o-calendar-days';
 
     public static function form(Form $form): Form
     {
@@ -31,11 +31,14 @@ class ActivityResource extends Resource
                         DatePicker::make('date')
                             ->required(),
                         TimePicker::make('start_at')
-                            ->seconds(false),
+                            ->seconds(false)
+                            ->label('Heure début'),
                         TimePicker::make('end_at')
-                            ->seconds(false),
+                            ->seconds(false)
+                            ->label('Heure fin'),
                         TextInput::make('name')
-                            ->required(),
+                            ->required()
+                            ->label('Nom'),
 
                     ]),
                 Section::make('Activite')
@@ -63,13 +66,16 @@ class ActivityResource extends Resource
                     ->sortable(),
                 TextColumn::make('start_at')
                     ->searchable()
-                    ->sortable(),
+                    ->sortable()
+                    ->label('Heure début'),
                 TextColumn::make('end_at')
                     ->searchable()
-                    ->sortable(),
+                    ->sortable()
+                    ->label('Heure fin'),
                 TextColumn::make('name')
                     ->searchable()
-                    ->sortable(),
+                    ->sortable()
+                    ->label('Nom'),
 
             ])
             ->filters([

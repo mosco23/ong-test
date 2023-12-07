@@ -28,7 +28,8 @@ class OddResource extends Resource
                 Section::make([
                     TextInput::make('name')
                         ->maxLength(255)
-                        ->required(),
+                        ->required()
+                        ->label('Nom'),
                     TextInput::make('description')
                         ->maxLength(255)
                         ->required(),
@@ -47,6 +48,7 @@ class OddResource extends Resource
                 TextColumn::make('name')
                     ->searchable()
                     ->sortable()
+                    ->label('Nom')
             ])
             ->filters([
                 //

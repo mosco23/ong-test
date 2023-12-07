@@ -19,7 +19,8 @@ class DomainResource extends Resource
 {
     protected static ?string $model = Domain::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-briefcase';
+    protected static ?string $modelLabel = "domaine";
 
     public static function form(Form $form): Form
     {
@@ -28,6 +29,7 @@ class DomainResource extends Resource
                 TextInput::make('name')
                     ->maxLength(255)
                     ->required()
+                    ->label('Nom')
             ]);
     }
 
@@ -38,6 +40,7 @@ class DomainResource extends Resource
                 TextColumn::make('name')
                     ->searchable()
                     ->sortable()
+                    ->label('Nom')
             ])
             ->filters([
                 //

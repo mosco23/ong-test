@@ -58,4 +58,12 @@ class User extends Authenticatable implements FilamentUser
         return $this->hasOne(OrgChart::class);
     }
 
+    function isAdmin() : bool {
+        return $this->hasRole('admin');
+    }
+
+    function isDev() : bool {
+        return $this->hasRole('dev');
+    }
+
 }

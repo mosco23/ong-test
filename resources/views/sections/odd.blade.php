@@ -68,7 +68,7 @@
         @include('items.section-title-2', ['title' => "Feuille de route de mise en œuvre des ODD élaborée par le Ministère de l’Environnement et du Développement Durable" ])
         <div>
             <img src="/img/feuille-de-route.png" alt="feuille de route odd">
-            <p class="text-xs font-semibold mt-2">Source : INS, leader des chiffres en Côte d’Ivoire </p>
+            <p class="text-xs font-semibold mt-2">Source : INS, leader des chiffres en Côte d’Ivoire </p>
         </div>
     </div>
 </section>

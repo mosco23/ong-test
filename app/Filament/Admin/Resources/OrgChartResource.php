@@ -50,12 +50,14 @@ class OrgChartResource extends Resource
 {
     protected static ?string $model = OrgChart::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-user-group';
+    protected static ?string $navigationGroup = "Authentification";
+    protected static ?string $modelLabel = "Organigramme";
 
     public static function form(Form $form): Form
     {
         return $form
-            ->schema([
+                ->schema([
                         Section::make()
                             ->schema([
                                 Select::make('block')
@@ -92,15 +94,17 @@ class OrgChartResource extends Resource
                             ->relationship('user', 'name')
                             ->required()
                             ->searchable()
-                            ->preload(),
-                    ])
-            ]);
+                            ->preload()
+                            ->label('Utilisateur'),
+                ])
+        ]);
     }
 
     public static function table(Table $table): Table
     {
         return $table
             ->columns([
+                TextColumn::make('block'),
                 TextColumn::make('title')
                     ->label('Titre'),
                 TextColumn::make('pid')

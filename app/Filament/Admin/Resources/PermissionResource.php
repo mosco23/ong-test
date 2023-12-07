@@ -15,7 +15,8 @@ class PermissionResource extends Resource
 {
     protected static ?string $model = Permission::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-circle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-clipboard-document-check';
+    protected static ?string $navigationGroup = "Authentification";
 
     public static function form(Form $form): Form
     {
@@ -24,7 +25,8 @@ class PermissionResource extends Resource
                 Forms\Components\TextInput::make('name')
                     ->required()
                     ->unique()
-                    ->maxLength(255),
+                    ->maxLength(255)
+                    ->label("Nom"),
                 // Forms\Components\TextInput::make('guard_name')
                 //     ->required()
                 //     ->maxLength(255),
@@ -35,8 +37,8 @@ class PermissionResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('name')->sortable()->searchable(),
-                Tables\Columns\TextColumn::make('guard_name')->sortable()->searchable(),
+                Tables\Columns\TextColumn::make('name')->sortable()->searchable()->label("Nom"),
+                // Tables\Columns\TextColumn::make('guard_name')->sortable()->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime('d-M-Y'),
                 Tables\Columns\TextColumn::make('updated_at')

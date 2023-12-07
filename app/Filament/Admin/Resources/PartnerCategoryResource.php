@@ -19,7 +19,11 @@ class PartnerCategoryResource extends Resource
 {
     protected static ?string $model = PartnerCategory::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationGroup = "Nos partenaires";
+    protected static ?string $navigationIcon = 'heroicon-o-hand-raised';
+    protected static ?string $modelLabel = "Categorie de partenaire";
+    protected static ?string $pluralModelLabel = "Categories de partenaire";
+
 
     public static function form(Form $form): Form
     {
@@ -28,6 +32,7 @@ class PartnerCategoryResource extends Resource
                 TextInput::make('name')
                     ->required()
                     ->maxLength(255)
+                    ->label('Nom')
             ]);
     }
 
@@ -35,7 +40,8 @@ class PartnerCategoryResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('name'),
+                TextColumn::make('name')
+                    ->label('Nom'),
                 // TextColumn::make('partners_count')
                     // ->count()
             ])

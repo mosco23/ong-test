@@ -22,7 +22,9 @@ class PartnerResource extends Resource
 {
     protected static ?string $model = Partner::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationGroup = "Nos partenaires";
+    protected static ?string $navigationIcon = 'heroicon-o-hand-thumb-up';
+    protected static ?string $modelLabel = "Partenaire";
 
     public static function form(Form $form): Form
     {
@@ -30,7 +32,8 @@ class PartnerResource extends Resource
             ->schema([
                 TextInput::make('name')
                     ->required()
-                    ->maxLength(255),
+                    ->maxLength(255)
+                    ->label('Nom'),
                 FileUpload::make('logo')
                     ->required()
                     ->image()
@@ -39,6 +42,7 @@ class PartnerResource extends Resource
                     ->relationship('partnerCategory', 'name')
                     ->preload()
                     ->searchable()
+                    ->label('Categorie')
                     ->createOptionForm([
                         TextInput::make('name')
                         ->required()
@@ -51,9 +55,11 @@ class PartnerResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('name'),
+                TextColumn::make('name')
+                    ->label('Nom'),
                 ImageColumn::make('logo'),
                 TextColumn::make('partnerCategory.name')
+                    ->label('Categorie')
             ])
             ->filters([
                 //

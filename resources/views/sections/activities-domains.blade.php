@@ -6,10 +6,7 @@
         @foreach (App\Models\Domain::all() as $domain)
             <div class="flex items-center space-x-2">
                 <div class="flex-none w-6 h-6 max-w-6 max-h-6 rounded-full p-1 text-blue-600">
-                    {{-- {{ $icon }} --}}
-                    <x-filament::icon
-                        :icon="$icon"
-                    />
+                    @svg($icon, 'w-full h-full')
                 </div>
                 <span class="text-wrap">{{$domain->name}}</span>
             </div>

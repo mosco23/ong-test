@@ -6,6 +6,7 @@ use App\Filament\Admin\Resources\SectionResource\Pages;
 use App\Models\Section;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Repeater;
+use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Section as ComponentsSection;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
@@ -20,7 +21,8 @@ class SectionResource extends Resource
 {
     protected static ?string $model = Section::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-circle-stack';
+    protected static ?string $navigationGroup = "Web master";
+    protected static ?string $navigationIcon = 'heroicon-o-chevron-up-down';
 
     public static function form(Form $form): Form
     {
@@ -37,7 +39,13 @@ class SectionResource extends Resource
                         ->maxLength(255),
                     TextInput::make('vue')
                         ->required()
-                        ->maxLength(255),
+                        ->maxLength(255)
+                        ->disabled(function($state){
+                            if(auth()->user()->isDev()){
+                                return false;
+                            }
+                            return $state != null;
+                        }),
                     TextInput::make('title')
                         ->maxLength(255),
                     TextInput::make('subtitle'),
@@ -46,7 +54,7 @@ class SectionResource extends Resource
                     FileUpload::make('img')
                         ->image()
                         ->imageEditor(),
-                    Textarea::make('description'),
+                    RichEditor::make('description'),
                 ])->columns(1),
                 Repeater::make('items')
                     ->relationship('items')

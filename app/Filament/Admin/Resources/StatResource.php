@@ -21,7 +21,8 @@ class StatResource extends Resource
 {
     protected static ?string $model = Stat::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $modelLabel = "Statistique";
+    protected static ?string $navigationIcon = 'heroicon-m-chart-pie';
 
     static function getFormIcons() : array {
         $directory = base_path("/vendor/blade-ui-kit/blade-heroicons/resources/svg");

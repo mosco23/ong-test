@@ -20,7 +20,10 @@ class NavitemResource extends Resource
 {
     protected static ?string $model = Navitem::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationGroup = "Navigation su site";
+    protected static ?string $navigationIcon = 'heroicon-o-arrow-top-right-on-square';
+    protected static ?string $modelLabel = "Element de navigation";
+    protected static ?string $pluralModelLabel = "Elements de navigation";
 
     public static function form(Form $form): Form
     {
@@ -28,15 +31,24 @@ class NavitemResource extends Resource
             ->schema([
                 TextInput::make("name")
                     ->required()
-                    ->maxLength(255),
+                    ->maxLength(255)
+                    ->label('Nom'),
                 TextInput::make('link')
                     ->required()
-                    ->maxLength(255),
+                    ->maxLength(255)
+                    ->label('Lien')
+                    ->disabled(function($state){
+                        if(auth()->user()->isDev()){
+                            return false;
+                        }
+                        return $state != null;
+                    }),
                 Select::make('navbars')
                     ->relationship('navbars', 'name')
                     ->preload()
                     ->searchable()
-                    ->multiple(),
+                    ->multiple()
+                    ->label('Barre de navigation'),
                 Select::make('navitem_id')
                     ->label("Parent")
                     ->relationship('navitem', 'name')
@@ -51,11 +63,13 @@ class NavitemResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('name')
-                    ->searchable(),
+                    ->searchable()
+                    ->label('Nom'),
                 TextColumn::make('navitem.name')
                     ->label('Parent')
                     ->searchable(),
-                TextColumn::make('link'),
+                TextColumn::make('link')
+                    ->label('Lien'),
             ])
             ->filters([
                 //

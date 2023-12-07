@@ -21,7 +21,8 @@ class ContactResource extends Resource
 {
     protected static ?string $model = Contact::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationGroup = "Nos contacts";
+    protected static ?string $navigationIcon = 'heroicon-o-device-phone-mobile';
 
     public static function form(Form $form): Form
     {
@@ -31,7 +32,8 @@ class ContactResource extends Resource
                     TextInput::make('name')
                         ->required()
                         ->maxLength(255)
-                        ->email(),
+                        ->email()
+                        ->label('Nom'),
                     TextInput::make('email')
                         ->required()
                         ->maxLength(255)
@@ -39,7 +41,8 @@ class ContactResource extends Resource
                     TextInput::make('subject')
                         ->required()
                         ->maxLength(255)
-                        ->email(),
+                        ->email()
+                        ->label('Objet'),
                     Textarea::make('message')
                         ->required()
                 ])
@@ -52,11 +55,13 @@ class ContactResource extends Resource
             ->columns([
                 TextColumn::make('name')
                     ->searchable()
-                    ->sortable(),
+                    ->sortable()
+                    ->label('Nom'),
                 TextColumn::make('email')
                     ->searchable(),
                 TextColumn::make('subject')
-                    ->searchable(),
+                    ->searchable()
+                    ->label('Objet'),
                 TextColumn::make('message')
                     ->searchable()
             ])

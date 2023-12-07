@@ -16,7 +16,8 @@ class RoleResource extends Resource
 {
     protected static ?string $model = Role::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-circle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-lock-closed';
+    protected static ?string $navigationGroup = "Authentification";
 
     public static function form(Form $form): Form
     {
@@ -27,7 +28,8 @@ class RoleResource extends Resource
                     TextInput::make('name')
                     ->required()
                     ->unique()
-                    ->maxLength(255),
+                    ->maxLength(255)
+                    ->label('Nom'),
                 ]),
                 
             ]);
@@ -37,8 +39,8 @@ class RoleResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('name')->sortable()->searchable(),
-                Tables\Columns\TextColumn::make('guard_name')->sortable()->searchable(),
+                Tables\Columns\TextColumn::make('name')->sortable()->searchable()->label('Nom'),
+                // Tables\Columns\TextColumn::make('guard_name')->sortable()->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime('d-M-Y'),
                 Tables\Columns\TextColumn::make('updated_at')

@@ -21,7 +21,9 @@ class ProgActivityResource extends Resource
 {
     protected static ?string $model = ProgActivity::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-m-document-text';
+    protected static ?string $modelLabel = "Programme d'activité";
+    protected static ?string $pluralModelLabel = "Programmes d'activité";
 
     public static function form(Form $form): Form
     {
@@ -32,19 +34,24 @@ class ProgActivityResource extends Resource
                         TextInput::make('start_at')
                             ->required()
                             ->numeric()
-                            ->minValue(2020),
+                            ->minValue(2020)
+                            ->label("Date debut"),
                         TextInput::make('end_at')
                             ->required()
                             ->numeric()
-                            ->minValue(2020),
+                            ->minValue(2020)
+                            ->label("Date fin"),
                         RichEditor::make('name')
-                            ->required(),
+                            ->required()
+                            ->label("Nom"),
                         TextInput::make('completion_time')
                             ->required()
-                            ->maxLength('255'),
+                            ->maxLength('255')
+                            ->label("Nombre de mois"),
                         TextInput::make('due_date')
                             ->required()
-                            ->maxLength('255'),
+                            ->maxLength('255')
+                            ->label("Periode"),
                     ])
             ]);
     }
@@ -55,19 +62,26 @@ class ProgActivityResource extends Resource
             ->columns([
                 TextColumn::make('start_at')
                     ->searchable()
-                    ->sortable(),
+                    ->sortable()
+                    ->label("Date Debut"),
                 TextColumn::make('end_at')
                     ->searchable()
-                    ->sortable(),
+                    ->sortable()
+                    ->label("Date Fin"),
                 TextColumn::make('name')
                     ->searchable()
-                    ->sortable(),
+                    ->sortable()
+                    ->label("Nom")
+                    ->wrap()
+                    ->html(),
                 TextColumn::make('completion_time')
                     ->searchable()
-                    ->sortable(),
+                    ->sortable()
+                    ->label("Nombre de mois"),
                 TextColumn::make('due_date')
                     ->searchable()
-                    ->sortable(),
+                    ->sortable()
+                    ->label("Periode"),
             ])
             ->filters([
                 //

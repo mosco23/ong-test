@@ -20,7 +20,8 @@ class PageResource extends Resource
 {
     protected static ?string $model = Page::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-circle-stack';
+    protected static ?string $navigationGroup = "Web master";
+    protected static ?string $navigationIcon = 'heroicon-o-document';
 
     public static function form(Form $form): Form
     {
@@ -30,24 +31,30 @@ class PageResource extends Resource
                     Select::make('template_id')
                         ->relationship('template', 'name')
                         ->preload()
-                        ->searchable(),
+                        ->searchable()
+                        ->label('Template'),
                     TextInput::make('slug')
                         // ->required()
-                        ->maxLength(255),
+                        ->maxLength(255)
+                        ->label('Lien'),
                     TextInput::make('name')
                         ->required()
-                        ->maxLength(255),
+                        ->maxLength(255)
+                        ->label('Nom'),
                     TextInput::make('title')
                         ->required()
-                        ->maxLength(255),
+                        ->maxLength(255)
+                        ->label('Titre'),
                     TextInput::make('description'),
                     Repeater::make('sections')
                         ->relationship('pageSections')
+                        ->label('Sections de page')
                         ->schema([
                             Select::make('section_id')
                                 ->relationship('section', 'name')
                                 ->preload()
-                                ->searchable(),
+                                ->searchable()
+                                ->label('Nom'),
                             // TextInput::make('name')
                             //     ->required()
                             //     ->maxLength(255),
@@ -59,6 +66,7 @@ class PageResource extends Resource
                             // TextInput::make('subtitle'),
                             // TextInput::make('description'),
                             Toggle::make('active')
+                                ->label('est actif')
                         ])
                         ->defaultItems(0)
                         ->orderColumn('rang')
@@ -74,13 +82,16 @@ class PageResource extends Resource
             ->columns([
                 TextColumn::make('name')
                     ->sortable()
-                    ->searchable(),
+                    ->searchable()
+                    ->label('Nom'),
                 TextColumn::make('title')
                     ->sortable()
-                    ->searchable(),
+                    ->searchable()
+                    ->label('Titre'),
                 TextColumn::make('slug')
                     ->sortable()
-                    ->searchable(),
+                    ->searchable()
+                    ->label('Lien'),
                 TextColumn::make('template.name')
                     ->sortable()
                     ->searchable(),
