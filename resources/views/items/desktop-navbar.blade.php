@@ -17,7 +17,7 @@
                  aria-current="page">
                 <span>{{$navitem->name}}</span>
                 @if ($navitem->items->isNotEmpty())
-                    <span class="h-4">@include('svg.arrow-down')</span>
+                    <span>@svg('m-arrow-down', 'w-5 h-5')</span>
                 @endif
             </a>
             @if ($navitem->items->isNotEmpty())

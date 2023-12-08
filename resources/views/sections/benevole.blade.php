@@ -11,7 +11,7 @@
             <div>
                 <a href="/contact" class="flex space-x-2 max-w-max p-3 text-white text-lg font-bold bg-pink-600">
                     <span>
-                        @include('svg.user-group')
+                        @svg('heroicon-o-user-group')
                     </span>
                     <span>
                         Postulez ici

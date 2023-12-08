@@ -14,7 +14,7 @@
                     return 'text-sm';
                 }
                 else{
-                    return 'text-xl';
+                    return 'text-lg';
                 }
             }
         }"
@@ -43,17 +43,19 @@
             </div>
             @include('items.desktop-navbar')
         </div>
-        <div class="flex-none w-36 lg:px-1">
-            <div class="flex items-center justify-center"
-                :class="window.innerWidth < 1105 ? 'hidden' : 'md:flex'; fontSize()">
+        <div class="flex-none w-max lg:px-1">
+            <div class="flex items-center justify-center px-2"
+                :class="window.innerWidth < 1105 ? 'hidden' : 'md:flex'">
                 <a href="#"
-                    class="flex items-center justify-center space-x-2 font-semibold hover:text-pink-600">
-                    <span>
-                        @include('svg.heart')
-                    </span>
-                    <span>
+                    class="flex flex-row items-center justify-center space-x-2 font-semibold hover:text-pink-600 min-w-max">
+                    <div>
+                        <span>
+                            @svg('m-heart', 'w-5 h-5')
+                        </span>
+                    </div>
+                    <div :class="fontSize()">
                         Faire un don
-                    </span>
+                    </div>
                 </a>
             </div>
         </div>

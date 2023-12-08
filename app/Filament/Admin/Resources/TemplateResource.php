@@ -29,7 +29,13 @@ class TemplateResource extends Resource
                         ->maxLength(255),
                     TextInput::make('vue')
                         ->required()
-                        ->maxLength(255),
+                        ->maxLength(255)
+                        ->disabled(function($state){
+                            if(auth()->user()->isDev()){
+                                return false;
+                            }
+                            return $state != null;
+                        }),
                 ])
             ]);
     }

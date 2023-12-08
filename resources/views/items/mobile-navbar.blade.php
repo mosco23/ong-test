@@ -32,10 +32,10 @@
                 @if ($navitem->items->isNotEmpty())
                     <div class="border-l p-3" @click="setIndex({{$navitem->id}})">
                         <span x-show="!(index === {{$navitem->id}})">
-                            @include('svg.plus')
+                            @svg('m-plus')
                         </span>
                         <span x-show="(index === {{$navitem->id}})">
-                            @include('svg.minus')</span>
+                            @svg('m-minus')</span>
                     </div>
                 @endif
             </div>
