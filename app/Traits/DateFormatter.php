@@ -6,7 +6,7 @@ use Carbon\Carbon;
 
 trait DateFormatter {
     public function getDate() {
-        return Carbon::parse($this->date)->translatedFormat('d F Y');
+        return Carbon::parse($this->date)->translatedFormat('d/m/Y');
     }
 
     public function getMonthName() {

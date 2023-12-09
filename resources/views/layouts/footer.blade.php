@@ -4,13 +4,13 @@
             <div class="my-3 md:my-6">
                 <div class="flex space-x-2">
                     <div>
-                        <div class="text-red-600 w-6 h-6">@svg('m-phone')</div>
+                        @svg('m-phone', 'w-5 h-5 text-red-600')
                     </div>
                     <div>
                         <p class="text-white font-bold text-lg">Appelez-nous</p>
-                        <p class="text-slate-400">+225 07 07 64 24 85</p>
-                        <p class="text-slate-400">+225 07 08 07 48 49</p>
-                        <p class="text-slate-400">+225 07 07 48 92 82</p>
+                        @foreach (\App\Models\SiteContact::all() as $contact)
+                            <p class="text-slate-400">{{$contact->contact}}</p>
+                        @endforeach
                     </div>
                 </div>
             </div>
@@ -18,32 +18,34 @@
                 <div class="flex space-x-2">
                     <div>
                         @svg('s-envelope', 'w-5 h-5 text-white')
-                        {{-- @svg('m-email') --}}
                     </div>
                     <div>
                         <p class="text-white font-bold text-lg">Ecrivez-nous</p>
-                        <p class="text-slate-400">contacts@oingase2d.org</p>
+                        <p class="text-slate-400">{{\App\Models\Site::first()->email}}</p>
                     </div>
                 </div>
             </div>
             <div class="my-3 md:my-6">
-                <div class="flex space-x-2">
-                    <div>
-                        @include('svg.m-facebook')
+                @foreach (\App\Models\SocialNetwork::all() as $social)
+                    <div class="flex items-center space-x-2">
+                        <div>
+                            <img src="{{asset('storage/'.$social->logo)}}" 
+                                alt="{{\App\Models\Site::first()->first_name}} {{\App\Models\Site::first()->last_name}} {{$social->name}}"
+                                class="w-5 h-5">
+                        </div>
+                        <div>
+                            <a href="{{$social->link}}"><p class="text-white">Rejoignez-nous sur <span class="font-bold text-lg">{{$social->name}}</span></p></a>
+                        </div>
                     </div>
-                    <div>
-                        <p class="text-white font-bold text-lg">Rejoignez-nous sur Facebook</p>
-                        <p class="text-slate-400"><a href="#">https://zetrey.com</a></p>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
         <div>
            <div class="grid grid-cols-1 md:grid-cols-3 gap-7 mt-10">
                 <div class="grid grid-cols-1 md:grid-rows-1 gap-4">
-                    <h1 class="text-white font-bold text-2xl">{{ env('APP_NAME')}}</h1>
+                    <h1 class="text-white font-bold text-2xl">{{\App\Models\Site::first()->first_name}} {{\App\Models\Site::first()->last_name}}</h1>
                     <div class="">
-                        <img src="/img/logo.png" alt="logo ase2d" class="w-64 h-64">
+                        <img src="{{asset('storage/'.\App\Models\Site::first()->logo )}}" alt="logo ase2d" class="w-64 h-64">
                     </div>
                 </div>
                 <x-navbar-bottom />
@@ -68,5 +70,5 @@
            </div>
         </div>
     </div>
-    <p class="text-center font-bold text-white">&copy; 2023 {{ env('APP_URL_WITHOUT_HTTP')}}</p>
+    <p class="text-center font-bold text-white">&copy; 2023 {{\App\Models\Site::first()->first_name}} {{\App\Models\Site::first()->last_name}}</p>
 </footer>

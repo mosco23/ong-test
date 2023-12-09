@@ -2,31 +2,29 @@
     <div class="lg:w-1/2 md:mx-5 lg:mx-auto grid grid-cols-1 mx-2 md:grid-cols-3 gap-y-5 md:gap-y-0 md:gap-x-5 md:h-72">
         <div class="anim-border-x anim-border-y flex flex-col space-y-4 items-center justify-center text-blue-950 px-5 py-5">
             <div>
-                <div class="w-20 h-20 text-red-800">@include('svg.map-pin')</div>
+                <div class="text-red-800">@svg('m-map-pin', 'w-10 h-10')</div>
             </div>
             <h2 class="text-2xl font-bold text-center">Notre adresse</h2>
-            <p class="text-slate-600 text-center">04 BP 1741 Abidjan 04 –Cocody Riviera 4, cité verdoyante</p>
+            <p class="text-slate-600 text-center">{{\App\Models\Site::first()->address}}</p>
         </div>
-        <div class="anim-border-x anim-border-y flex flex-col space-y-4 items-center justify-center px-5">
+        <div class="anim-border-x anim-border-y flex flex-col space-y-4 items-center justify-center px-5 py-3">
             <div>
-                <div class="w-20 h-20 text-green-800">@include('svg.phone')</div>
+                <div class="text-green-800">@svg('m-phone', 'w-10 h-10')</div>
             </div>
             <h2 class="text-2xl font-bold text-center text-blue-950">Téléphone</h2>
             <ul class="text-slate-600 text-center">
-                <li>(+225)  2722203986</li>
-                <li>(+225) 0102827032</li>
-                <li>(+225) 0748251401</li>
+                @foreach (\App\Models\SiteContact::all() as $contact)
+                <li>{{$contact->contact}}</li>
+                @endforeach
             </ul>
         </div>
-        <div class="anim-border-x anim-border-y flex flex-col space-y-4 items-center justify-center px-5">
-            <div>
-                <div class="w-20 h-20 text-center text-rose-500">@include('svg.wifi')</div>
+        <div class="anim-border-x anim-border-y flex flex-col space-y-4 items-center justify-center px-5 py-3">
+            <div class="flex items-center justify-center p-3">
+                <span class="text-center text-rose-500">@svg('m-wifi', 'w-10 h-10')</span>
             </div>
             <h2 class="text-2xl font-bold text-center text-blue-950">Site internet</h2>
             <ul class="text-slate-600 text-center">
-                <li>ase2d.zetrey.com</li>
-                <li>ase2d.ci</li>
-                <li>ase2d.com</li>
+                <li>{{\App\Models\Site::first()->email}}</li>
             </ul>
         </div>
     </div>

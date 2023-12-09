@@ -21,11 +21,11 @@
         >
         <div class="col-span-2 lg:flex-none lg:w-[20.7rem] bg-white py-5 pl-5">
             <a href="/" class="flex items-center">
-                <img src="/img/logo.png" class="h-16 md:h-24 mr-3" alt="Flowbite Logo">
+                <img src="{{asset('storage/'.\App\Models\Site::first()->logo )}}" class="h-16 md:h-24 mr-3" alt="Flowbite Logo">
                 <div class="grid grid-cols-1 divide-y gap-y-2">
-                    <span class="self-center whitespace-nowrap">
-                        <span class="md:text-4xl font-semibold text-green-500">OING</span>
-                        <span class="md:text-4xl font-semibold text-blue-800">ASE2D</span>
+                    <span class="self-center whitespace-nowrap uppercase">
+                        <span class="md:text-4xl font-semibold text-green-500">{{\App\Models\Site::first()->first_name}}</span>
+                        <span class="md:text-4xl font-semibold text-blue-800">{{\App\Models\Site::first()->last_name}}</span>
                     </span>
                     <p class="text-xs text-black text-wrap">Actions du Sud pour l'Environnement et le Développement Durable</p>
                 </div>

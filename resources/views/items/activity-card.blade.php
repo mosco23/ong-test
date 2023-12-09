@@ -9,7 +9,7 @@
     }
 @endphp
 
-<div class="grid grid-cols-1 gap-y-3"   x-data="{'isModalOpen': false}" x-on:keydown.escape="isModalOpen=false">
+<div class="grid grid-cols-1 gap-y-3" x-data="{'isModalOpen': false}" x-on:keydown.escape="isModalOpen=false">
     <div>
         <span class="p-2 border-b-2 border-r-2 border-green-600 text-slate-600 font-semibold rounded-r-xl">
            {!! $timeFormatted !!}
