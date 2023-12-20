@@ -1,6 +1,6 @@
 @php
     $itemCount = count($items);
-    $gridCols = $itemCount > 3 ? 'md:grid-cols-3' : 'md:grid-cols-'.$itemCount;
+    $gridCols = $itemCount >= 2 ? 'md:grid-cols-2' : 'md:grid-cols-1';
 @endphp
 
 <div class="{{$bg_color}} p-5 rounded-lg">

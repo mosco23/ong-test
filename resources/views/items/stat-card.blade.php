@@ -21,7 +21,7 @@
     </span> --}}
     <div class="text-5xl font-bold text-slate-600 text-center"
         x-data="clock"
-        x-init="max = 200; init()"
+        x-init="max = {{$stat->count}}; init()"
         x-text="counter"></div>
     <p class="text-center text-slate-500">{{$stat->description }}</p>
 </div>

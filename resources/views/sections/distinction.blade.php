@@ -3,10 +3,11 @@
         @foreach ($sect['items'] as $item)
             <div class="border border-slate-200 my-5 grid grid-cols-1 w-96">
                 <div class="p-1">
-                    <img src={{"/storage/". $item['image'] }} alt="" class="w-full max-h-80">
+                    <img src={{"/storage/". $item['image'] }} alt="" class="w-full h-96">
+                    {{-- <img src={{"/storage/". $item['image'] }} alt="" class="w-full max-h-80"> --}}
                 </div>
-                <p class="p-4 text-slate-600">{{$item['title']}}</p>
-                <p class="p-4 text-slate-400 text-sm">{{$item['description']}}</p>
+                {{-- <p class="p-4 text-slate-600">{{$item['title']}}</p>
+                <p class="p-4 text-slate-400 text-sm">{{$item['description']}}</p> --}}
             </div>
         @endforeach
     </div>
