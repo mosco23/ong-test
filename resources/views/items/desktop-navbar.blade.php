@@ -30,7 +30,7 @@
                                 $activated = true;
                             }
                         @endphp
-                        <a href="/{{$sub->link}}" class="h-fit p-3 w-full hover:text-white hover:bg-pink-600 {{ !$activated ? 'text-slate-600' : 'text-white bg-pink-600'}}">{{$sub->name}}</a>
+                        <a href="/{{$sub->link}}" class="h-fit p-3 w-full hover:text-white hover:bg-slate-600 {{ !$activated ? 'text-slate-600' : 'text-white bg-pink-600'}}">{{$sub->name}}</a>
                     @endforeach
                 </div>
             @endif
