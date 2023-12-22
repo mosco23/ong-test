@@ -17,6 +17,7 @@ class Site extends Model
         'description',
         'link',
         'address',
+        'place',
         'email',
     ];
 

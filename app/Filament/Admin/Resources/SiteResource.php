@@ -58,6 +58,10 @@ class SiteResource extends Resource
                             ->required()
                             ->label('Adresse')
                             ->maxLength(255),
+                        TextInput::make('place')
+                            ->required()
+                            ->label('Siège social')
+                            ->maxLength(255),
                         TextInput::make('link')
                             ->required()
                             ->label('Lien')
@@ -115,6 +119,10 @@ class SiteResource extends Resource
                     ->searchable(),
                 TextColumn::make('address')
                     ->label('Adresse')
+                    ->sortable()
+                    ->searchable(),
+                TextColumn::make('place')
+                    ->label('Siège social')
                     ->sortable()
                     ->searchable(),
                 TextColumn::make('link')

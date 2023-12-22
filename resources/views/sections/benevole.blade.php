@@ -21,6 +21,6 @@
         </div>
     </div>
     <div class=" md:px-0 px-2">
-        <img src="/img/membre.webp" alt="logo" class="w-full h-72 md:h-[40rem]">
+        <img src="{{asset('storage/'.$sect['img'])}}" alt="logo" class="w-full h-72 md:h-[40rem]">
     </div>
 </section>

@@ -6,6 +6,10 @@
             </div>
             <h2 class="text-2xl font-bold text-center">Notre adresse</h2>
             <p class="text-slate-600 text-center">{{\App\Models\Site::first()->address}}</p>
+            <div>
+                <p class="font-bold">Siège social : </p>
+                <p class="text-slate-600 text-center">{{\App\Models\Site::first()->place}}</p>
+            </div>
         </div>
         <div class="anim-border-x anim-border-y flex flex-col space-y-4 items-center justify-center px-5 py-3">
             <div>
