@@ -15,6 +15,7 @@ class OrgChartController extends Controller
                         ->join('users','users.id','=','org_charts.user_id')
                         ->select("org_charts.id", "pid", "block", "title", "img", "users.name as name")
                         ->get()
+                        ->sortBy('pid')
                         ->groupBy('block')
                         ->toArray();
                         // ->sortBy('id');

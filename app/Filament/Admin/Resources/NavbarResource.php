@@ -23,7 +23,7 @@ class NavbarResource extends Resource
 {
     protected static ?string $model = Navbar::class;
 
-    protected static ?string $navigationGroup = "Navigation su site";
+    protected static ?string $navigationGroup = "Web master";
     protected static ?string $navigationIcon = 'heroicon-o-arrow-path-rounded-square';
     protected static ?string $modelLabel = "Barre de navigation";
     protected static ?string $pluralModelLabel = "Barres de navigation";

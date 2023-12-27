@@ -20,7 +20,7 @@ class NavitemResource extends Resource
 {
     protected static ?string $model = Navitem::class;
 
-    protected static ?string $navigationGroup = "Navigation su site";
+    protected static ?string $navigationGroup = "Web master";
     protected static ?string $navigationIcon = 'heroicon-o-arrow-top-right-on-square';
     protected static ?string $modelLabel = "Element de navigation";
     protected static ?string $pluralModelLabel = "Elements de navigation";

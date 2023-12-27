@@ -22,6 +22,7 @@ class SiteResource extends Resource
 {
     protected static ?string $model = Site::class;
 
+    protected static ?string $navigationGroup = "Web master";
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     public static function form(Form $form): Form

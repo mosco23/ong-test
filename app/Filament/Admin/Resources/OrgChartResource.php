@@ -64,26 +64,31 @@ class OrgChartResource extends Resource
                             ->options(OrgchartBlockEnum::class)
                             ->required()
                             ->live(),
-                        Select::make('pid')
-                            ->label('Niveau')
-                            ->options(function(Get $get){
-                                $block = $get('block');
-                                if($block ==  OrgchartBlockEnum::president){
-                                    return range(1, 3);
-                                }else if($block == OrgchartBlockEnum::commissaire || $block == OrgchartBlockEnum::secretaire || $block == OrgchartBlockEnum::tresorier){
-                                    return range(1, 2);
-                                }else{
-                                    return range(1, OrgChart::all()->count() + 1);
-                                }
+                        TextInput::make('pid')
+                                ->label('Niveau')
+                                ->numeric()
+                                ->integer()
+                                ->required(),
+                        // Select::make('pid')
+                        //     ->label('Niveau')
+                        //     ->options(function(Get $get){
+                        //         $block = $get('block');
+                        //         if($block ==  OrgchartBlockEnum::president){
+                        //             return range(1, 3);
+                        //         }else if($block == OrgchartBlockEnum::commissaire || $block == OrgchartBlockEnum::secretaire || $block == OrgchartBlockEnum::tresorier){
+                        //             return range(1, 2);
+                        //         }else{
+                        //             return range(1, OrgChart::all()->count() + 1);
+                        //         }
 
-                            })
-                            ->required(),
+                        //     })
+                        //     ->required(),
                         TextInput::make("title")
                             ->label('Titre')
                             ->live()
-                            ->afterStateUpdated(function (Set $set, $state) {
-                                $set('title', strtoupper($state));
-                            })
+                            // ->afterStateUpdated(function (Set $set, $state) {
+                            //     $set('title', strtoupper($state));
+                            // })
                             ->required()
                             ->maxLength(255),
                         FileUpload::make('img')

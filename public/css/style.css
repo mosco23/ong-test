@@ -20,7 +20,7 @@
     position: absolute;
     height: 100%;
     width: 100%;
-    -webkit-border-radius: 100%;
+    border-radius: 100%;
     clip: rect(0px, 100px, 100px, 40px);
     /* background-color: saddlebrown; */
 }
@@ -142,4 +142,21 @@
 @keyframes move {
     0%   { transform: translate(0, 0); }
     100% { transform: translate(-100%, 0); }
+}
+
+
+
+.scrolling-text {
+    white-space: nowrap; /* Empêche le texte de passer à la ligne */
+    overflow: hidden; /*Cache le texte qui dépasse */
+    animation: scrollText 10s linear infinite; /* Définit l'animation avec une durée de 10 secondes et une boucle infinie */
+  }
+
+@keyframes scrollText {
+from {
+    transform: translateX(100%); /* Déplace le texte complètement à droite au début de l'animation */
+}
+to {
+    transform: translateX(-100%); /* Déplace le texte complètement à gauche à la fin de l'animation */
+}
 }
