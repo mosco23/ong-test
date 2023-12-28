@@ -20,7 +20,7 @@
                 this.index = 0,
                 setInterval(() => {
                     this.nextText();
-                }, 10000); // 10000 milliseconds = 10 seconds
+                }, 12000); // 12000 milliseconds = 12 seconds
             },
             nextText() {
                 this.index = (this.index + 1) % this.events.length;
@@ -28,8 +28,8 @@
         }"
         x-init="initTexts()">
         <template x-for="(text, i) in events" :key="i">
-            <div class="py-2" :class="i == index ?'px-2 scrolling-text' : 'hidden' ">
-                <p x-text="text"></p>
+            <div class="py-2 min-w-max" :class="i == index ?'scrolling-text' : 'hidden' ">
+                <p x-text="text" class="min-w-max"></p>
             </div>
         </template>
     </div>

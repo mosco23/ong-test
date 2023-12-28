@@ -148,8 +148,8 @@
 
 .scrolling-text {
     white-space: nowrap; /* Empêche le texte de passer à la ligne */
-    overflow: hidden; /*Cache le texte qui dépasse */
-    animation: scrollText 10s linear infinite; /* Définit l'animation avec une durée de 10 secondes et une boucle infinie */
+    /* overflow: hidden;  */
+    animation: scrollText 12s linear infinite; /* Définit l'animation avec une durée de 10 secondes et une boucle infinie */
   }
 
 @keyframes scrollText {
