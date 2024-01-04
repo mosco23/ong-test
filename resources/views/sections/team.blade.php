@@ -27,7 +27,7 @@
     @endforeach --}}
     @include('sections.team-list', ['title' => 'Presidence', 'items' => $presidence])
     @include('sections.team-list', ['title' => 'Tr&eacute;sorerie', 'items' => $tresorier])
-    @include('sections.team-list', ['title' => 'Commissariats aux comptes', 'items' => $commissaire])
+    @include('sections.team-list', ['title' => 'Commissariat aux comptes', 'items' => $commissaire])
     @include('sections.team-list', ['title' => 'S&eacute;cr&eacute;tariat', 'items' => $secretaire])
     @include('sections.team-list', ['title' => 'Coordonnateurs', 'items' => $coordonateurs])
 
