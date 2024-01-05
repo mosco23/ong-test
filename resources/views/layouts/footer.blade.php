@@ -53,15 +53,18 @@
                     @csrf
                     <h1 class="text-white font-bold text-2xl">Obtenir des mises &aacute; jour</h1>
                     <p class="text-white">Tenez-vous au courant des dernières nouvelles de notre organisation caritative.</p>
-                    <div class="py-4 px-2 border border-slate-200 max-w-full grid grid-cols-10 gap-x-3 md:flex md:items-center md:space-x-1 md:max-w-max">
+                    <div class="py-4 px-2 border border-slate-200 @error('email') ring-1 ring-red-500 @enderror max-w-full grid grid-cols-10 gap-x-3 md:flex md:items-center md:space-x-1 md:max-w-max">
                         <div class="col-span-9 md:col-span-1">
                             <input type="email" name="email"  placeholder="Entrez votre adresse email"
-                            class="bg-transparent w-full text-white" required>
+                            class="bg-transparent w-full text-white"  value="{{ old('email') }}" required>
                         </div>
                         <div>
                             @svg('s-envelope', 'w-5 h-5 text-white')
                         </div>
                     </div>
+                    @error('email')
+                        <div class="bg-red-600 text-white p-2">{{ $message }}</div>
+                    @enderror
                     <div class="">
                         <button class="p-4 font-bold bg-pink-500 text-white">Souscrire maintenant</button>
                     </div>

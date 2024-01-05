@@ -8,8 +8,11 @@
         case 'warning':
             $bg = 'bg-orange-600';
             break;
-        default:
+        case 'success':
             $bg = 'bg-green-600';
+            break;
+        default:
+            $bg = 'bg-slate-600';
             break;
     }
 
