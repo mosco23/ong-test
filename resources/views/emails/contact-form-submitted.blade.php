@@ -29,7 +29,13 @@
         <div>
             <p>Nous vous recontacterons dès que possible pour répondre à votre demande ou pour discuter de tout autre sujet que vous avez soulevé.</p>
             <p>
-                Si vous avez des questions supplémentaires ou si vous avez besoin d'une assistance immédiate, n'hésitez pas à nous contacter par email à {{env('MAIL_FROM_ADDRESS')}} ou par téléphone au {{ env('PHONE_FROM_ADDRESS')}}.
+                Si vous avez des questions supplémentaires ou si vous avez besoin d'une assistance immédiate, n'hésitez pas à nous contacter par email à {{env('MAIL_FROM_ADDRESS')}} ou par téléphone au 
+                @foreach (\App\Models\SiteContact::all() as $contact)
+                    {{ $contact->contact}}
+                    @if (!$loop->last)
+                         / 
+                    @endif
+                @endforeach.
             </p>
             <p>
                 Encore une fois, merci de nous avoir contactés. Nous sommes là pour vous aider.

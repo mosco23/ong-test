@@ -35,4 +35,5 @@
     </div>
 
     <x-navbar />
+    @include('items.notifications.notification')
 </header>

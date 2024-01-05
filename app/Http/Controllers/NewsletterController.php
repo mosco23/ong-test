@@ -32,7 +32,13 @@ class NewsletterController extends Controller
             'email' => 'required|email|max:255',
         ]);
 
-        Newsletter::create($validated);
+        if (Newsletter::where("email", $validated['email'])) {
+            $request->session()->flash('message', 'Vous êtes déjà inscrit à notre newsletter. Merci de votre confiance !');
+            $request->session()->flash('type', 'error');
+        } else {
+            Newsletter::create($validated);
+        }
+        
         return back();
     }
 

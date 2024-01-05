@@ -23,7 +23,14 @@
             Si jamais vous souhaitez mettre à jour vos préférences d'abonnement ou vous désabonner à l'avenir, vous pouvez le faire en cliquant sur le lien de gestion de l'abonnement inclus dans chaque e-mail que nous envoyons.
         </p>
         <p>
-            Si vous avez des questions, des commentaires ou des suggestions, n'hésitez pas à nous contacter à {{env('MAIL_FROM_ADDRESS')}} ou à {{ env('PHONE_FROM_ADDRESS') }}. Nous sommes là pour vous aider.
+            Si vous avez des questions, des commentaires ou des suggestions, n'hésitez pas à nous contacter à {{env('MAIL_FROM_ADDRESS')}} ou par t&eacute;l&eacute;phone au 
+            @foreach (\App\Models\SiteContact::all() as $contact)
+                {{ $contact->contact}}
+                @if (!$loop->last)
+                     / 
+                @endif
+            @endforeach. 
+            Nous sommes là pour vous aider.
         </p>
         <p>
             Une fois de plus, merci de nous accorder votre confiance. Nous avons hâte de partager avec vous les meilleures informations et offres à venir.
