@@ -1,5 +1,5 @@
 @php
-    $activities = \App\Models\Activity::all()->sortByDesc('end_at')->sortByDesc('start_at')->sortByDesc('date')
+    $activities = \App\Models\Activity::all()->sortByDesc('end_at')->sortByDesc('start_at')->sortByDesc('date');
 @endphp
 
 <section class="py-14 bg-white">

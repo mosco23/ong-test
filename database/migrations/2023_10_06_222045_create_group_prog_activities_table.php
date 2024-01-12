@@ -11,9 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('prog_activities', function (Blueprint $table) {
-            $table->string('start_at')->nullable();
-            $table->string('end_at')->nullable();
+        Schema::create('group_prog_activities', function (Blueprint $table) {
+            $table->id();
+            $table->string('title');
+            $table->timestamps();
         });
     }
 
@@ -22,8 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('prog_activities', function (Blueprint $table) {
-            $table->dropColumn(['start_at', 'end_at']);
-        });
+        Schema::dropIfExists('group_prog_activities');
     }
 };

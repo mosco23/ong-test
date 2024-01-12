@@ -17,7 +17,7 @@ class Navbar extends Component
      */
     public function __construct()
     {
-        $navbar = ModelsNavbar::where('name', 'desktop')->get()->last();
+        $navbar = ModelsNavbar::find(1);
         $this->navitems = Navitem::whereHas('navbars', function (Builder $query) use ($navbar) {
             $query->where('navbars.id', $navbar->id);
         })

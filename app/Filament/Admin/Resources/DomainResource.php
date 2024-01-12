@@ -20,7 +20,8 @@ class DomainResource extends Resource
     protected static ?string $model = Domain::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-briefcase';
-    protected static ?string $modelLabel = "domaine";
+    protected static ?string $modelLabel = "Domaine d'actions";
+    protected static ?string $pluralModelLabel = "Domaines d'actions";
 
     public static function form(Form $form): Form
     {

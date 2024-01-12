@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class ProgActivity extends Model
 {
@@ -13,9 +14,13 @@ class ProgActivity extends Model
         'name',
         'completion_time',
         'due_date',
-        'start_at', 
-        'end_at'
+        'place',
+        'group_prog_activity_id',
     ];
 
+
+    function groupProgActivity(): BelongsTo {
+        return $this->belongsTo(GroupProgActivity::class);
+    }
     
 }

@@ -21,11 +21,11 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class SubNavitemResource extends Resource
 {
-    protected static ?string $modelLabel = "Range navitems";
-
     protected static ?string $model = Navitem::class;
 
-    protected static ?string $navigationGroup = "Web master";
+    protected static ?string $modelLabel = "Menu choisi";
+    protected static ?string $pluralLabel = "Ordonner menus";
+    protected static ?string $navigationGroup = "Navigation du site";
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     public static function form(Form $form): Form

@@ -73,5 +73,5 @@
            </div>
         </div>
     </div>
-    <p class="text-center font-bold text-white">&copy; 2023 {{\App\Models\Site::first()->first_name}} {{\App\Models\Site::first()->last_name}}</p>
+    <p class="text-center font-bold text-white">&copy; 2024 {{\App\Models\Site::first()->first_name}} {{\App\Models\Site::first()->last_name}}</p>
 </footer>

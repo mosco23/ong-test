@@ -17,7 +17,7 @@ class NavbarBottom extends Component
      */
     public function __construct()
     {
-        $navbar = Navbar::where('name', 'desktop-bottom')->get()->last();
+        $navbar = Navbar::find(2);
         $this->navitems = Navitem::whereHas('navbars', function (Builder $query) use ($navbar) {
             $query->where('navbars.id', $navbar->id);
         })

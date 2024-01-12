@@ -20,7 +20,7 @@ class PageObserver
      */
     public function updated(Page $page): void
     {
-        //
+        // Navitem::update(['name' => $page->name, 'link' => $page->slug]);
     }
 
     /**

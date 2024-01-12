@@ -4,8 +4,9 @@
     $tresorier = $orgCharts["tresorier"];
     $commissaire = $orgCharts["commissaire"];
     $secretaire = $orgCharts["secretaire"];
-    $coordonateurs = $orgCharts["coordonateur"] ?? [];
+    $coordonnateurs = $orgCharts["coordonnateur"] ?? [];
 @endphp
+
 <section class="bg-white py-14">
     <div class="hidden lg:block">
         @include('items.orgchart.orgchart')

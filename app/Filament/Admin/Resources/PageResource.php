@@ -20,7 +20,7 @@ class PageResource extends Resource
 {
     protected static ?string $model = Page::class;
 
-    protected static ?string $navigationGroup = "Web master";
+    protected static ?string $navigationGroup = "Gestion des pages";
     protected static ?string $navigationIcon = 'heroicon-o-document';
 
     public static function form(Form $form): Form
@@ -54,17 +54,24 @@ class PageResource extends Resource
                                 ->relationship('section', 'name')
                                 ->preload()
                                 ->searchable()
-                                ->label('Nom'),
-                            // TextInput::make('name')
-                            //     ->required()
-                            //     ->maxLength(255),
-                            // TextInput::make('vue')
-                            //     ->required()
-                            //     ->maxLength(255),
-                            // TextInput::make('title')
-                            //     ->maxLength(255),
-                            // TextInput::make('subtitle'),
-                            // TextInput::make('description'),
+                                ->label('Nom')
+                                ->createOptionForm([
+                                    TextInput::make('name')
+                                        ->required()
+                                        ->maxLength(255),
+                                    TextInput::make('vue')
+                                        ->required()
+                                        ->maxLength(255)
+                                        ->disabled(function($state){
+                                            if(auth()->user()->isDev()){
+                                                return false;
+                                            }
+                                            return $state != null;
+                                        }),
+                                    TextInput::make('title')
+                                        ->maxLength(255),
+                                    TextInput::make('subtitle'),
+                                    ]),
                             Toggle::make('active')
                                 ->label('est actif')
                         ])

@@ -21,6 +21,7 @@ class ActivityResource extends Resource
     protected static ?string $model = Activity::class;
     protected static ?string $modelLabel = "activité";
     protected static ?string $navigationIcon = 'heroicon-o-calendar-days';
+    protected static ?string $navigationGroup = "Nos activités";
 
     public static function form(Form $form): Form
     {

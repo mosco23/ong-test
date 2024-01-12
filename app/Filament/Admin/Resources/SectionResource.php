@@ -21,7 +21,7 @@ class SectionResource extends Resource
 {
     protected static ?string $model = Section::class;
 
-    protected static ?string $navigationGroup = "Web master";
+    protected static ?string $navigationGroup = "Gestion des pages";
     protected static ?string $navigationIcon = 'heroicon-o-chevron-up-down';
 
     public static function form(Form $form): Form
@@ -59,13 +59,17 @@ class SectionResource extends Resource
                 Repeater::make('items')
                     ->relationship('items')
                     ->schema([
-                        TextInput::make('title'),
-                        TextInput::make('description'),
+                        TextInput::make('title')
+                            ->required()
+                            ->maxLength(255),
+                        Textarea::make('decription')
+                            ->rows(10)
+                            ->cols(30),
                         FileUpload::make('image')
                             ->image()
                             ->imageEditor()
                     ])
-                    ->columns(2)
+                    ->columns(1)
                     ->defaultItems(0)
             ]);
     }

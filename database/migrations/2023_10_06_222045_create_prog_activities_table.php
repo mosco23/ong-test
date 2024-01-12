@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\GroupProgActivity;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -16,6 +17,9 @@ return new class extends Migration
             $table->text('name');
             $table->string('completion_time');
             $table->string('due_date');
+            $table->integer('sort')->default(0);
+            $table->string('place')->nullable();
+            $table->foreignIdFor(GroupProgActivity::class)->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->timestamps();
         });
     }

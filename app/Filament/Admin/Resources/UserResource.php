@@ -28,7 +28,7 @@ class UserResource extends Resource
                 Forms\Components\TextInput::make('name')
                     ->required()
                     ->maxLength(255)
-                    ->label("nom"),
+                    ->label("Nom et Prenoms"),
                 Forms\Components\TextInput::make('email')
                     ->email()
                     ->required()
@@ -46,11 +46,11 @@ class UserResource extends Resource
                     ->preload()
                     ->searchable()
                     ->multiple(),
-                Select::make('permission_id')
-                    ->relationship('permissions', 'name')
-                    ->preload()
-                    ->searchable()
-                    ->multiple()
+                // Select::make('permission_id')
+                //     ->relationship('permissions', 'name')
+                //     ->preload()
+                //     ->searchable()
+                //     ->multiple()
             ]);
     }
 
@@ -58,8 +58,13 @@ class UserResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('name')->sortable()->searchable()->label("Nom"),
-                Tables\Columns\TextColumn::make('email')->sortable()->searchable(),
+                Tables\Columns\TextColumn::make('name')
+                    ->sortable()
+                    ->searchable()
+                    ->label("Nom et Prenoms"),
+                Tables\Columns\TextColumn::make('email')
+                    ->sortable()
+                    ->searchable(),
                 // Tables\Columns\TextColumn::make('email_verified_at')
                 //     ->dateTime()
                 //     ->label("Date verification"),

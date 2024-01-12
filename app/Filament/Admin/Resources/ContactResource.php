@@ -63,7 +63,9 @@ class ContactResource extends Resource
                     ->searchable()
                     ->label('Objet'),
                 TextColumn::make('message')
-                    ->searchable()
+                    ->searchable(),
+                TextColumn::make('created_at')
+                    ->since()
             ])
             ->filters([
                 //

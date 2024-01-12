@@ -2,9 +2,9 @@
 
 namespace App\Filament\Admin\Resources;
 
-use App\Filament\Admin\Resources\SecondaryActivityResource\Pages;
-use App\Filament\Admin\Resources\SecondaryActivityResource\RelationManagers;
-use App\Models\SecondaryActivity;
+use App\Filament\Admin\Resources\GroupProgActivityResource\Pages;
+use App\Filament\Admin\Resources\GroupProgActivityResource\RelationManagers;
+use App\Models\GroupProgActivity;
 use Filament\Forms;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
@@ -15,20 +15,20 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class SecondaryActivityResource extends Resource
+class GroupProgActivityResource extends Resource
 {
-    protected static ?string $model = SecondaryActivity::class;
+    protected static ?string $model = GroupProgActivity::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
-    protected static ?string $modelLabel = "Activité secondaire";
-    protected static ?string $pluralModelLabel = "Activités secondaires";
+    protected static ?string $modelLabel = "Groupe de programme d'activité";
+    protected static ?string $pluralModelLabel = "Groupes de programmes d'activité";
     protected static ?string $navigationGroup = "Nos activités";
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                TextInput::make('name')
+                TextInput::make('title')
                     ->required()
                     ->maxLength(255)
             ]);
@@ -38,9 +38,7 @@ class SecondaryActivityResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('name')
-                    ->searchable()
-                    ->sortable()
+                TextColumn::make('title')->sortable()->searchable(),
             ])
             ->filters([
                 //
@@ -65,9 +63,9 @@ class SecondaryActivityResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListSecondaryActivities::route('/'),
-            'create' => Pages\CreateSecondaryActivity::route('/create'),
-            'edit' => Pages\EditSecondaryActivity::route('/{record}/edit'),
+            'index' => Pages\ListGroupProgActivities::route('/'),
+            'create' => Pages\CreateGroupProgActivity::route('/create'),
+            'edit' => Pages\EditGroupProgActivity::route('/{record}/edit'),
         ];
     }    
 }

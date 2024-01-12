@@ -23,10 +23,10 @@ class NavbarResource extends Resource
 {
     protected static ?string $model = Navbar::class;
 
-    protected static ?string $navigationGroup = "Web master";
+    protected static ?string $navigationGroup = "Navigation du site";
     protected static ?string $navigationIcon = 'heroicon-o-arrow-path-rounded-square';
-    protected static ?string $modelLabel = "Barre de navigation";
-    protected static ?string $pluralModelLabel = "Barres de navigation";
+    protected static ?string $modelLabel = "Menu";
+    protected static ?string $pluralModelLabel = "Menus de navigation";
 
     public static function form(Form $form): Form
     {
@@ -50,9 +50,6 @@ class NavbarResource extends Resource
                                 }
                                 return $state != null;
                             }),
-                        Select::make('parent')
-                            ->preload()
-                            ->searchable(),
                     ])
                     ->defaultItems(0)
                     ->orderColumn('navitems.sort')

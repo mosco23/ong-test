@@ -8,6 +8,7 @@ use App\Models\ProgActivity;
 use Filament\Forms;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Section;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -24,6 +25,7 @@ class ProgActivityResource extends Resource
     protected static ?string $navigationIcon = 'heroicon-m-document-text';
     protected static ?string $modelLabel = "Programme d'activité";
     protected static ?string $pluralModelLabel = "Programmes d'activité";
+    protected static ?string $navigationGroup = "Nos activités";
 
     public static function form(Form $form): Form
     {
@@ -31,16 +33,16 @@ class ProgActivityResource extends Resource
             ->schema([
                 Section::make()
                     ->schema([
-                        TextInput::make('start_at')
+                        Select::make('group_prog_activity_id')
+                            ->relationship('groupProgActivity', 'title')
+                            ->preload()
+                            ->searchable()
                             ->required()
-                            ->numeric()
-                            ->minValue(2020)
-                            ->label("Date debut"),
-                        TextInput::make('end_at')
-                            ->required()
-                            ->numeric()
-                            ->minValue(2020)
-                            ->label("Date fin"),
+                            ->createOptionForm([
+                                TextInput::make('title')
+                                    ->required()
+                                    ->maxLength(255)
+                            ]),
                         RichEditor::make('name')
                             ->required()
                             ->label("Nom"),
@@ -52,6 +54,9 @@ class ProgActivityResource extends Resource
                             ->required()
                             ->maxLength('255')
                             ->label("Periode"),
+                        RichEditor::make('place')
+                            ->maxLength('255')
+                            ->label("Lieu"),
                     ])
             ]);
     }
@@ -60,19 +65,14 @@ class ProgActivityResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('start_at')
+                TextColumn::make('groupProgActivity.title')
                     ->searchable()
-                    ->sortable()
-                    ->label("Date Debut"),
-                TextColumn::make('end_at')
-                    ->searchable()
-                    ->sortable()
-                    ->label("Date Fin"),
+                    ->sortable(),
                 TextColumn::make('name')
                     ->searchable()
                     ->sortable()
                     ->label("Nom")
-                    ->wrap()
+                    ->words(5)
                     ->html(),
                 TextColumn::make('completion_time')
                     ->searchable()
@@ -82,6 +82,12 @@ class ProgActivityResource extends Resource
                     ->searchable()
                     ->sortable()
                     ->label("Periode"),
+                // TextColumn::make('place')
+                //     ->searchable()
+                //     ->sortable()
+                //     ->label("Lieu")
+                //     ->html()
+                //     ->words(5),
             ])
             ->filters([
                 //

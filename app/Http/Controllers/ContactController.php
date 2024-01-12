@@ -35,7 +35,11 @@ class ContactController extends Controller
             'message' => 'required',
         ]);
 
-        Contact::create($validated);
+        $contact = Contact::create($validated);
+        if($contact){
+            $request->session()->flash('message', "Votre message a bien été reçu et nous allons l'examiner dans les plus brefs délais.");
+            $request->session()->flash('type', 'success');
+        }
         return back();
     }
 

@@ -99,13 +99,13 @@
         @include('items.orgchart.orgchart-horizontal-line')
     </div>
     <div class="flex justify-center" id="coordonnateur">
-        @foreach ($coordonateurs as $coordonateur)
+        @foreach ($coordonnateurs as $coordonnateur)
             @php
-                $marginLeft = $forloop->first ? '' : 'ml-10'
+                $marginLeft = $loop->first ? '' : 'ml-10'
             @endphp
             <div class="{{$marginLeft}}">
                 @include('items.orgchart.orgchart-vertical-line')
-                @include('items.orgchart.orgchart-item-mobile', ['org' => $coordonateur])
+                @include('items.orgchart.orgchart-item-mobile', ['org' => $coordonnateur])
             </div>
         @endforeach
     </div>

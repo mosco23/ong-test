@@ -9,7 +9,7 @@ class EventPreview extends Model
 {
     use HasFactory;
 
-    private $fillable = [
+    protected $fillable = [
         'day',
         'start_at',
         'end_at',

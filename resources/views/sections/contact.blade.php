@@ -26,7 +26,7 @@
             <div class="flex items-center justify-center p-3">
                 <span class="text-center text-rose-500">@svg('m-wifi', 'w-10 h-10')</span>
             </div>
-            <h2 class="text-2xl font-bold text-center text-blue-950">Site internet</h2>
+            <h2 class="text-2xl font-bold text-center text-blue-950">E-mail</h2>
             <ul class="text-slate-600 text-center">
                 <li>{{\App\Models\Site::first()->email}}</li>
             </ul>

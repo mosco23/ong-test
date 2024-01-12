@@ -5,6 +5,7 @@ namespace App\Providers\Filament;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
+use Filament\Navigation\NavigationGroup;
 use Filament\Pages;
 use Filament\Panel;
 use Filament\PanelProvider;
@@ -26,8 +27,30 @@ class AdminPanelProvider extends PanelProvider
             ->id('admin')
             ->path('admin')
             ->login()
+            ->breadcrumbs(false)
             ->sidebarCollapsibleOnDesktop()
-            // ->registration()
+            ->navigationGroups([
+                NavigationGroup::make()
+                    ->label('Nos activités')
+                    ->collapsed(),
+                    //  ->icon('heroicon-o-shopping-cart'),
+                NavigationGroup::make()
+                    ->label('Nos contacts')
+                    ->collapsed(),
+                    // ->icon('heroicon-o-pencil'),
+                NavigationGroup::make()
+                    ->label('Authentification')
+                    // ->icon('heroicon-o-cog-6-tooth')
+                    ->collapsed(),
+                NavigationGroup::make()
+                    ->label('Nos partenaires')
+                    // ->icon('heroicon-o-cog-6-tooth')
+                    ->collapsed(),
+                NavigationGroup::make()
+                    ->label('Web master')
+                    // ->icon('heroicon-o-cog-6-tooth')
+                    ->collapsed(),
+            ])
             ->colors([
                 'primary' => Color::Amber,
             ])
