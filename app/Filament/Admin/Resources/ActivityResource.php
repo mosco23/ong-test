@@ -42,18 +42,16 @@ class ActivityResource extends Resource
                             ->label('Nom'),
 
                     ]),
-                Section::make('Activite')
-                    ->schema([
-                        Repeater::make('images')
-                            ->relationship()
-                            ->simple(
-                                FileUpload::make('url')
-                                    ->image()
-                                    ->imageEditor()
-                                    ->required()
-                            )
-                            ->orderColumn('sort')
-                    ]),
+                Repeater::make('images')
+                    ->relationship()
+                    ->simple(
+                        FileUpload::make('url')
+                            ->image()
+                            ->imageEditor()
+                            ->required()
+                    )
+                    ->orderColumn('sort')
+                    ->columns(1),
                
             ]);
     }

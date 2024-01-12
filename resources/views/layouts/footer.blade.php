@@ -1,6 +1,6 @@
-<footer class="px-6 py-16 bg-blue-950 grid grid-cols-1 gap-y-14">
+<footer class="px-3 py-16 bg-blue-950 grid grid-cols-1 gap-y-14">
     <div class="lg:w-2/3 mx-auto grid grid-cols-1 gap-y-20 md:gap-x-5 md:grid-rows-1 divide-y divide-neutral-400">
-        <div class="grid grid-cols-1 md:grid-cols-3 md:gap-x-5">
+        <div class="grid grid-cols-1 md:grid-cols-3 md:gap-x-3">
             <div class="my-3 md:my-6">
                 <div class="flex space-x-2">
                     <div>
@@ -25,7 +25,8 @@
                     </div>
                 </div>
             </div>
-            <div class="my-3 md:my-6">
+            <div class="my-3 md:my-6 ">
+                <p class="text-white">Rejoignez-nous sur </p>
                 @foreach (\App\Models\SocialNetwork::all() as $social)
                     <div class="flex items-center space-x-2">
                         <div>
@@ -34,7 +35,7 @@
                                 class="w-5 h-5">
                         </div>
                         <div>
-                            <a href="{{$social->link}}"><p class="text-white">Rejoignez-nous sur <span class="font-bold text-lg">{{$social->name}}</span></p></a>
+                            <a href="{{$social->link}}" class="font-bold text-lg text-white">{{$social->name}}</a>
                         </div>
                     </div>
                 @endforeach

@@ -1,10 +1,15 @@
+@php
+    $activities = \App\Models\Activity::all();
+    $my_events = [];
+    foreach ($activities as $activity) {
+        array_push($my_events, $activity->toText());
+    }
+
+    // dd($my_events); 
+@endphp
+
 <div class="block md:hidden wow fadeIn overflow-hidden font-bold" :class=" atTop ? 'bg-white text-slate-800': 'bg-blue-950 text-white' "
     x-data="{
-        events: [
-            'Lancements des activites et dipisicing elit. Iusto quas culpa corporis voluptatem amet aliquid dolorem', 
-            'text 2, ipsum dolor sit amet consectetur adipisicing elit. Iusto quas culpa corporis voluptatem amet aliquid doloremque corrupti aspernatur itaque? Nesciunt beatae corporis est blanditiis. Repellat cum maiores est quaerat! Voluptates?', 
-            'text 3, ipsum dolor sit amet consectetur adipisicing elit. Iusto quas culpa corporis voluptatem amet aliquid doloremque corrupti aspernatur itaque? Nesciunt beatae corporis est blanditiis. Repellat cum maiores est quaerat! Voluptates?'
-        ],
         index: -1,
         initTexts() {
             this.index = 0,
@@ -13,13 +18,16 @@
             }, 15000); // 15000 milliseconds = 15 seconds
         },
         nextText() {
-            this.index = (this.index + 1) % this.events.length;
+            this.index = (this.index + 1) % {{count($my_events)}};
         }
     }"
     x-init="initTexts()">
-    <template x-for="(text, i) in events" :key="i">
-        <div class="py-2 min-w-max" :class="i == index ?'mobile-scrolling-text' : 'hidden' ">
-            <p x-text="text" class="min-w-max"></p>
+    @foreach ($my_events as $key => $value)
+        <div class="py-2 min-w-max" :class="{{$key}} == index ?'mobile-scrolling-text' : 'hidden' ">
+            <p class="min-w-max">{{$value}}</p>
+            {{-- <p x-text="text" class="min-w-max"></p> --}}
         </div>
-    </template>
+    @endforeach
+    {{-- <template x-for="(text, i) in events" :key="i">
+    </template> --}}
 </div>

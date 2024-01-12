@@ -27,4 +27,16 @@ class Activity extends Model
         return $this->belongsToMany(Image::class);
     }
 
+    function toText() : string {
+        if($this->date && $this->start_at && $this->end_at){
+            return "$this->date de $this->start_at a $this->end_at $this->name";
+        }
+
+        if($this->date && $this->start_at){
+            return "$this->date a $this->start_at $this->name";
+        }
+
+        return $this->name;
+    }
+
 }
