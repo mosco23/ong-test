@@ -13,13 +13,14 @@ return new class extends Migration
     {
         Schema::create('event_previews', function (Blueprint $table) {
             $table->id();
-            $table->date('day');
-            $table->time('start_at');
-            $table->time('end_at');
+            $table->datetime('start_at');
+            $table->datetime('end_at');
+            $table->string('name');
             $table->string('description')->nullable();
             $table->string('location')->nullable();
             $table->string('img')->nullable();
             $table->boolean('active')->default(false);
+            $table->dateTime('stop_at')->nullable();
             $table->timestamps();
         });
     }

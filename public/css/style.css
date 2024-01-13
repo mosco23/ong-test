@@ -148,12 +148,12 @@
 
 .desktop-scrolling-text {
     white-space: nowrap; /* Empêche le texte de passer à la ligne */
-    animation: scrollText 12s linear infinite; /* Définit l'animation avec une durée de 10 secondes et une boucle infinie */
+    animation: scrollText 15s linear infinite; /* Définit l'animation avec une durée de 10 secondes et une boucle infinie */
   }
 
 .mobile-scrolling-text {
     white-space: nowrap; /* Empêche le texte de passer à la ligne */
-    animation: scrollText 15s linear infinite; /* Définit l'animation avec une durée de 10 secondes et une boucle infinie */
+    animation: scrollText 20s linear infinite; /* Définit l'animation avec une durée de 10 secondes et une boucle infinie */
   }
 @keyframes scrollText {
 from {

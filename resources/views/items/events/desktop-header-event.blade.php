@@ -1,14 +1,10 @@
 <div class="hidden md:block wow fadeIn overflow-hidden font-bold" :class=" atTop ? 'bg-white text-slate-800': 'bg-blue-950 text-white' "
     x-data="{
-        index: -1,
         initTexts() {
             this.index = 0,
             setInterval(() => {
                 this.nextText();
-            }, 12000); // 12000 milliseconds = 12 seconds
-        },
-        nextText() {
-            this.index = (this.index + 1) % {{count($my_events)}};
+            }, 15000); // 15000 milliseconds = 15 seconds
         }
     }"
     x-init="initTexts()">
