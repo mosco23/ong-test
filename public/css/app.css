@@ -652,6 +652,18 @@ video {
   top: auto;
 }
 
+.bottom-10 {
+  bottom: 2.5rem;
+}
+
+.left-5 {
+  left: 1.25rem;
+}
+
+.top-2\/3 {
+  top: 66.666667%;
+}
+
 .z-0 {
   z-index: 0;
 }
@@ -2475,10 +2487,6 @@ video {
 
   .md\:grid-cols-3 {
     grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-
-  .md\:grid-cols-4 {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 
   .md\:grid-rows-1 {

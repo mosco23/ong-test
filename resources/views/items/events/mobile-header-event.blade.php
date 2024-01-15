@@ -4,7 +4,7 @@
             this.index = 0,
             setInterval(() => {
                 this.nextText();
-            }, 20000); // 20000 milliseconds = 20 seconds
+            }, 21000); // 21000 milliseconds = 21 seconds
         }
     }"
     x-init="initTexts()">

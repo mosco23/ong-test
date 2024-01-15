@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -22,16 +23,12 @@ class EventPreview extends Model
 
     function toText() : string {
         $text = '';
-        if($this->date && $this->start_at && $this->end_at){
-            $text = "$this->date de $this->start_at a $this->end_at $this->name";
+        if($this->start_at && $this->end_at){
+            $text = "du ".$this->parseDate($this->start_at)." au ".$this->end_at." ".$this->name;
         }
 
-        if($this->date && $this->start_at){
-            $text = "$this->date a $this->start_at $this->name";
-        }
-
-        if($this->date){
-            $text = "$this->date, $this->name";
+        if($this->start_at){
+            $text = $this->parseDate($this->start_at).",  ".$this->name;
         }
 
         if(!$text){
@@ -43,5 +40,9 @@ class EventPreview extends Model
         }
 
         return $text;
+    }
+
+    function parseDate($date) {
+        return Carbon::parse($date)->translatedFormat('d/m/Y');
     }
 }

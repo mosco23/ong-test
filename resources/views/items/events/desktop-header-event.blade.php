@@ -4,7 +4,7 @@
             this.index = 0,
             setInterval(() => {
                 this.nextText();
-            }, 15000); // 15000 milliseconds = 15 seconds
+            }, 16000); // 16000 milliseconds = 16 seconds
         }
     }"
     x-init="initTexts()">
