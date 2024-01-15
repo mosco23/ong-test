@@ -26,8 +26,10 @@ class EventPreviewTask extends Command
      */
     public function handle()
     {
+        $this->info('Starting to control event preview active');
         EventPreview::where('active', true)
                     ->Where('stop_at', '<=', now())
                     ->update(['active' => false]);
+        $this->info('Event preview control succed');
     }
 }

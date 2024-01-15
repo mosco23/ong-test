@@ -12,7 +12,9 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule): void
     {
-        $schedule->command('task:event-preview')->everyTenSeconds();
+        $schedule->command('task:event-preview')
+            ->everyTenSeconds()
+            ->appendOutputTo('scheduler.log');
     }
 
     /**
