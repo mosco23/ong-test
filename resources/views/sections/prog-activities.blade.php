@@ -1,5 +1,5 @@
 @php
-    $group_prog_activity = App\Models\GroupProgActivity::all()->reverse();
+    $group_prog_activity = App\Models\GroupProgActivity::all();
 @endphp
 
 <section class="py-12 bg-white">
