@@ -40,13 +40,11 @@ class EventPreviewResource extends Resource
                 Section::make("Periode")
                     ->schema([
                         DateTimePicker::make('start_at')
-                            ->required()
                             ->label('Date de Debut')
                             ->seconds(false)
                             ->displayFormat('d/m/Y')
                             ->timezone('Africa/Abidjan'),
                         DateTimePicker::make('end_at')
-                            ->required()
                             ->label("Date de Fin")
                             ->seconds(false)
                             ->displayFormat('d/m/Y')

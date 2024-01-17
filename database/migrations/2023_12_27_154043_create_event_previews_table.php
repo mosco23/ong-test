@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('event_previews', function (Blueprint $table) {
             $table->id();
-            $table->datetime('start_at');
-            $table->datetime('end_at');
+            $table->datetime('start_at')->nullable();
+            $table->datetime('end_at')->nullable();
             $table->string('name');
             $table->string('description')->nullable();
             $table->string('location')->nullable();
