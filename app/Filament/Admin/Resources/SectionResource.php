@@ -69,7 +69,7 @@ class SectionResource extends Resource
                             ->image()
                             ->imageEditor()
                     ])
-                    ->columns(1)
+                    ->columns(2)
                     ->defaultItems(0)
             ]);
     }
