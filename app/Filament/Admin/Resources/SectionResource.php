@@ -56,21 +56,27 @@ class SectionResource extends Resource
                         ->imageEditor(),
                     RichEditor::make('description'),
                 ])->columns(1),
-                Repeater::make('items')
-                    ->relationship('items')
-                    ->schema([
-                        TextInput::make('title')
-                            ->required()
-                            ->maxLength(255),
-                        Textarea::make('decription')
-                            ->rows(10)
-                            ->cols(30),
-                        FileUpload::make('image')
-                            ->image()
-                            ->imageEditor()
-                    ])
-                    ->columns(2)
-                    ->defaultItems(0)
+                ComponentsSection::make(
+                    [
+                        Repeater::make('items')
+                            ->relationship('items')
+                            ->schema([
+                                TextInput::make('title')
+                                    ->required()
+                                    ->maxLength(255),
+                                Textarea::make('decription')
+                                    ->rows(10)
+                                    ->cols(30),
+                                FileUpload::make('image')
+                                    ->image()
+                                    ->imageEditor()
+                            ])
+                            ->defaultItems(0)
+                            ->grid()
+                            ->collapsed()
+                            ->itemLabel(fn (array $state): ?string => $state['title'] ?? null),
+                    ]
+                )
             ]);
     }
 
