@@ -6,16 +6,16 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Agenda extends Model
+class PvLine extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'name', 
-        'description',
-        'begin_date',
-        'end_date',
-        'is_active',
+        'name',
+        'p_v_id',
     ];
 
+    public function pv(): BelongsTo {
+        return $this->belongsTo(PV::class);
+    }
 }

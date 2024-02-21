@@ -11,9 +11,11 @@ class PV extends Model
 {
     use HasFactory, DateFormatter;
 
+    protected $table = 'p_v_s';
+
     protected $fillable = ['name', 'date', 'url'];
 
-    function agendas() : HasMany {
-        return $this->hasMany(Agenda::class);
+    function lines() : HasMany {
+        return $this->hasMany(PvLine::class);
     }
 }

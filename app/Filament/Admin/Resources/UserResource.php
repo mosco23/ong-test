@@ -6,7 +6,10 @@ use App\Filament\Admin\Resources\UserResource\Pages;
 use App\Filament\Admin\Resources\UserResource\RelationManagers\RolesRelationManager;
 use App\Models\User;
 use Filament\Forms;
+use Filament\Forms\Components\Fieldset;
+use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Select;
+use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -33,7 +36,23 @@ class UserResource extends Resource
                     ->email()
                     ->required()
                     ->maxLength(255),
-                Forms\Components\DateTimePicker::make('email_verified_at'),
+                Fieldset::make('Profile')
+                    ->relationship('profile')
+                    ->schema([
+                        Repeater::make('profile')
+                            ->relationship('profileEmails')
+                            ->label('E-mails Supplémentaires')
+                            ->simple(
+                                TextInput::make('email')
+                            )->defaultItems(0),
+                        Repeater::make('profileContacts')
+                            ->relationship('profileContacts')
+                            ->label('Contacts')
+                            ->simple(
+                                TextInput::make('contact')
+                            )->defaultItems(0),
+                    ]),
+                // Forms\Components\DateTimePicker::make('email_verified_at'),
                 Forms\Components\TextInput::make('password')
                     ->password()
                     ->required(fn (string $operation): bool => $operation === 'create')

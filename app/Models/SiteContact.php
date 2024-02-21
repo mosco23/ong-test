@@ -12,6 +12,7 @@ class SiteContact extends Model
 
     protected $fillable = [
         'contact',
+        'site_id'
     ];
 
     function site(): BelongsTo {

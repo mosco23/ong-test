@@ -47,8 +47,8 @@ class PVResource extends Resource
                             ->label('Fichier')
                             ->directory('pdf'),
                     ]),
-                Repeater::make('agenda_id')
-                    ->relationship('agendas')
+                Repeater::make('pv_line_id')
+                    ->relationship('lines')
                     ->label('Ordres du jour')
                     ->simple(
                         TextInput::make('name')

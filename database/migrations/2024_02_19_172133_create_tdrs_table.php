@@ -11,13 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('agendas', function (Blueprint $table) {
+        Schema::create('tdrs', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('title');
             $table->string('description')->nullable();
-            $table->date('begin_date');
-            $table->date('end_date');
-            $table->boolean('is_active')->default(true);
             $table->timestamps();
         });
     }
@@ -27,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('agendas');
+        Schema::dropIfExists('tdrs');
     }
 };

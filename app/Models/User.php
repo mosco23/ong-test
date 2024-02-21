@@ -54,6 +54,10 @@ class User extends Authenticatable implements FilamentUser
         return str_ends_with($this->email, '@gmail.com');
     }
 
+    public function profile(): HasOne {
+        return $this->hasOne(Profile::class);
+    }
+
     function orgChart(): HasOne {
         return $this->hasOne(OrgChart::class);
     }

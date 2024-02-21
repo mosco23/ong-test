@@ -3,8 +3,8 @@
     <h3 class="text-slate-600 font-semibold text-xl">{{$pv->name}}</h3>
     <div class="text-justify grid grid-cols-1 gap-y-2">
         <ul class="list-decimal grid grid-cols-1 gap-y-2">
-            @foreach ($pv->agendas as $agenda)
-                <li>{{$agenda->name}}</li>
+            @foreach ($pv->lines as $line)
+                <li>{{$line->name}}</li>
             @endforeach
         </ul>
         <p>Divers</p>

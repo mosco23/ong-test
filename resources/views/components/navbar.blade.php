@@ -43,22 +43,7 @@
             </div>
             @include('items.desktop-navbar')
         </div>
-        <div class="flex-none w-max lg:px-1">
-            <div class="flex items-center justify-center px-2"
-                :class="window.innerWidth < 1105 ? 'hidden' : 'md:flex'">
-                <a href="#"
-                    class="flex flex-row items-center justify-center space-x-2 font-semibold hover:text-pink-600 min-w-max">
-                    <div>
-                        <span>
-                            @svg('m-heart', 'w-5 h-5')
-                        </span>
-                    </div>
-                    <div :class="fontSize()">
-                        Faire un don
-                    </div>
-                </a>
-            </div>
-        </div>
+        
     </div>
     <div class="bg-white text-slate-400 mx-4"
         :class="openItem ? 'block' : 'hidden'">
