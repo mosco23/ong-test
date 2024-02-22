@@ -2,22 +2,15 @@
 
 namespace App\Filament\Admin\Resources;
 
-use Filament\Tables\Columns\Summarizers\Count;
 use App\Filament\Admin\Resources\NavbarResource\Pages;
-use App\Filament\Admin\Resources\NavbarResource\RelationManagers;
 use App\Models\Navbar;
-use Filament\Forms;
 use Filament\Forms\Components\Repeater;
-use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
-use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class NavbarResource extends Resource
 {
@@ -51,8 +44,10 @@ class NavbarResource extends Resource
                                 return $state != null;
                             }),
                     ])
-                    ->defaultItems(0)
                     ->orderColumn('navitems.sort')
+                    ->defaultItems(0)
+                    ->reorderableWithButtons()
+                    ->cloneable()
                     ->itemLabel(fn (array $state): ?string => $state['name'] ?? null),
 
             ])
