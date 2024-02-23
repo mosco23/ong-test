@@ -11,10 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('p_v_s', function (Blueprint $table) {
+        Schema::create('reports', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->text('description')->nullable();
             $table->date('date');
+            $table->string('url');
+            $table->boolean('is_pv')->default(false);
+            $table->boolean('is_activity')->default(false);
+            $table->boolean('is_mission')->default(false);
             $table->timestamps();
         });
     }
@@ -24,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('p_v_s');
+        Schema::dropIfExists('reports');
     }
 };
